@@ -1,0 +1,75 @@
+FlickerLight2 FlameThrowerFire
+{
+Offset 0 2 0
+Color 0.15 0.04 0.0
+Size 40
+SecondarySize 60
+Interval 2.0
+}
+
+pointlight BloodLustSphere
+{
+    color 1.0 0.0 0.0
+    size 40
+}
+object BloodLustSphere
+{
+    frame BLST { light BloodLustSphere }
+}
+
+
+Object SKULLPROJECTILE
+{
+Frame SKLR { Light FlameThrowerFire }
+Frame EXPS { Light Explosion }
+}
+
+FlickerLight2 DropFlame
+{
+Offset 0 0 0
+Color 0.15 0.04 0.0
+Size 20
+SecondarySize 30
+Interval 2.0
+}
+
+PointLight Explosion
+{
+Offset 0 0 0
+Color 0.5 0.25 0.0
+Size 256
+}
+
+Object Carl_Rocket
+{
+Frame MISL { Light FlamethrowerFire }
+Frame EXPL { Light Explosion }
+}
+
+PointLight Flash
+{
+Offset 0 0 0
+Color 0.5 0.25 0.0
+Size 64
+}
+
+PointLight Flash2
+{
+Offset 0 0 0
+Color 0.5 0.25 0.0
+Size 48
+}
+
+PointLight Flash3
+{
+Offset 0 0 0
+Color 0.5 0.25 0.0
+Size 32
+}
+/*
+Object MuzzleSmoke
+{
+Frame TNT1A { Light Flash3 }
+Frame SMOKA { Light Flash3 }
+}
+*/

@@ -1,0 +1,28 @@
+[enu default]
+
+SECRETMESSAGE = "What was once Unknown, is now Seen.";
+
+QUITMSG = "Press Y to get the firing squad.";
+QUITMSG1 = "Peace.";
+QUITMSG2 = "You're Already Dead.";
+QUITMSG3 = "Could use a coffee break.";
+QUITMSG4 = "You're gonna carry that weight.";
+QUITMSG5 = "MUDAMUDAMUDAMUDAMUDAMUDAMUDAMUDA-";
+QUITMSG6 = "See ya later.";
+QUITMSG7 = "Press Y to Get Smoked.";
+QUITMSG8 = "Next time on Dragon Ball Z...";
+QUITMSG9 = "Enough running and gunning for now?";
+QUITMSG10 = "Too much anime?";
+QUITMSG11 = "Had Enough?";
+QUITMSG12 = "The mask has chosen incorrectly.";
+QUITMSG13 = ":thinking:";
+QUITMSG14 = "You gotta go?";
+
+
+STARTUP1 = "            = Naku-Naru V.1.3 =";
+STARTUP2 = "--------------------------------------------------------------";
+STARTUP3 = "			**Anime Mech Noises**";
+STARTUP4 = "--------------------------------------------------------------";
+
+TXT_YES = "Yeah.";
+TXT_NO = "Nope.";

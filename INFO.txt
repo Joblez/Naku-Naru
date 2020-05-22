@@ -1,0 +1,16 @@
+Information:
+Name: Mementwo Big
+Variants: 3
+Type: BigFont
+Format: FON2
+Replaces: N/A
+Size: 12px
+Paletted: Doom
+Lower-cases: No
+Individual glyphs/character maps included: Yes
+Standard GFX included: N/A
+
+MM2FONT = original font
+MM2FONTO = original font with thick black outline
+MM2FONTS = original font with 1px drop shadow
+DBIGFONT = same as MM2FONTO - named DBIGFONT for use in ZDoom

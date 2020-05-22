@@ -1,0 +1,14 @@
+ ALTFONT
+   {
+       0 stnum0
+       1 stnum1
+       2 stnum2
+       3 stnum3
+       4 stnum4
+       5 stnum5
+       6 stnum6
+       7 stnum7
+       8 stnum8
+       9 stnum9
+       NOTRANSLATION 256	// don't touch the shadow color!
+   }

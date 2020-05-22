@@ -1,0 +1,25 @@
+version "4.0"
+
+//WEAPONS
+
+#include "zscript/weapons/baseweapon.zc"
+
+#include "zscript/weapons/staff.zc"
+
+#include "zscript/weapons/nambu.zc"
+
+#include "zscript/weapons/m1887.zc"
+
+#include "zscript/weapons/pm-9.zc"
+
+#include "zscript/weapons/type99.zc"
+
+#include "zscript/weapons/carl_gustav.zc"
+
+#include "zscript/weapons/opening.zc"
+
+#include "zscript/weapons/skull.zc"
+
+#include "zscript/weapons/type96.zc"
+
+#include "zscript/weapons/howa.zc"

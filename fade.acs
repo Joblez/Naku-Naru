@@ -1,0 +1,28 @@
+#include "zcommon.acs"
+
+Script 101 OPEN
+{
+	if (!GetCVar ("fade_toggle"))
+	{
+		faderange(0, 0, 0, 1.0, 0, 0, 0, 0.0, 3.0);
+		}
+		
+}
+ 
+Script 102 DEATH
+{
+
+	if (!GetCVar ("fade_toggle"))
+		{
+			fadeto(0, 0, 0, 1.0, 0.5);
+			}
+			
+}
+
+Script 103 RESPAWN
+{
+	if (!GetCVar ("fade_toggle"))
+	{
+		fadeto(255, 255, 255, 0.0, 0.0);
+		}
+}

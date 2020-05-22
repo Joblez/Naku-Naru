@@ -1,0 +1,77 @@
+DEFAULTLISTMENU
+{
+    Font "BIGFONT", "white", "gold"
+    Selector "M_SKULL1", -32, -5
+    Linespacing 16
+}
+
+
+OptionValue "LMGOPTION"
+{
+0, "Type 99 Nambu"
+1, "Type 89 Howa"
+}
+
+
+OptionMenu "NakuEffects"
+{
+
+title "Naku-Naru Options"
+
+StaticText " "
+
+StaticText "Visual Effects"
+
+Option "Bullet Casings", "casing_toggle","OnOff"
+
+Option "Muzzle Smoke", "smoke_toggle","OnOff"
+
+Option "Particles from Projectiles", "weapon_particle_toggle","OnOff"
+
+Option "Fade-Ins/Fade-Outs", "fade_toggle", "OffOn"
+
+Option "Recoil", "recoil_toggle", "OnOff"
+
+StaticText " "
+
+StaticText "Gameplay Options"
+
+Option "Type 99 or Type 89?","plasma_toggle","LMGOPTION"
+
+}
+
+LISTMENU "MainMenu"
+{
+    StaticPatch 94, 2, "M_DOOM"
+
+    Position 118, 68
+    TextItem "New Game", "n", "PlayerclassMenu"
+    ifOption(SwapMenu)
+    {
+        Position 109, 84
+        TextItem "Load Game",     "l", "LoadGameMenu"
+        Position 110, 100
+        TextItem "Save Game",     "s", "SaveGameMenu"
+        Position 111, 116
+        TextItem "Options",       "o", "OptionsMenu"
+        Position 112, 132
+        TextItem "Mod Options",   "d", "CvarMenu"
+    }
+    else
+    {
+        Position 126, 84
+        TextItem "Options",       "o", "OptionsMenu"
+        Position 108, 100
+        TextItem "Mod Options",   "d", "NakuEffects"
+        Position 116, 116
+        TextItem "Load Game",     "l", "LoadGameMenu"
+        Position 115, 132
+        TextItem "Save Game",     "s", "SaveGameMenu"
+    }
+    Position 118, 148
+    TextItem "Tips & Credits",     "r", "ReadThisMenu"
+    Position 116, 164
+    TextItem "Quit Game", "q", "QuitMenu"
+}
+
+//==============================================================================

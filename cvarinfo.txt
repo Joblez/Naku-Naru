@@ -1,0 +1,13 @@
+
+server int casing_toggle = 1;
+
+server int smoke_toggle = 1;
+
+server int weapon_particle_toggle = 1;
+
+server int fade_toggle = 0;
+
+server int plasma_toggle = 0;
+
+server int recoil_toggle = 1;
+

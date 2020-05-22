@@ -1,0 +1,9 @@
+clearplayerclasses
+
+addplayerclass "newplayer"
+
+//addkeysection "Naku-Naru - Spellcasting" NAKUCONTROLS
+
+   //addmenukey "Cast Spell" CASTING
+   //alias Casting "give SpellCasting"
+   //defaultbind Q SpellCasting   

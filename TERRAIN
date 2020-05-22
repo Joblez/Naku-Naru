@@ -1,0 +1,166 @@
+//==============================================================================
+// Terrain definitions
+//==============================================================================
+splash Water
+{
+	noalert
+	smallclass		WaterSplash
+	smallclip		12
+	smallsound		world/drip
+	
+	baseclass		WaterSplashBase
+	chunkclass		WaterSplash
+	chunkxvelshift	8
+	chunkyvelshift	8
+	chunkzvelshift	8
+	chunkbasezvel	2
+	sound			world/watersplash
+}
+
+splash Blood
+{
+	noalert
+	smallclass		BloodSplash
+	smallclip		12
+	smallsound		world/sludgegloop
+
+	baseclass		BloodSplashBase
+	chunkclass		BloodSplash
+	chunkxvelshift	8
+	chunkyvelshift	8
+	chunkzvelshift	8
+	chunkbasezvel	1
+	sound			world/sludgegloop
+}
+
+splash Nuke
+{
+	noalert
+	smallclass		LavaSmoke
+	smallclip		12
+	smallsound		world/lavasizzle
+
+	baseclass		SlimeSplash
+	chunkclass		LavaSmoke
+	chunkxvelshift	-1
+	chunkyvelshift	-1
+	chunkzvelshift	7
+	chunkbasezvel	1
+	sound			world/lavasizzle
+}
+
+splash Lava
+{
+	noalert
+	smallclass		LavaSmoke
+	smallclip		12
+	smallsound		world/lavasizzle
+
+	baseclass		LavaSplash
+	chunkclass		LavaSmoke
+	chunkxvelshift	-1
+	chunkyvelshift	-1
+	chunkzvelshift	7
+	chunkbasezvel	1
+	sound			world/lavasizzle
+}
+
+splash Slime
+{
+	noalert
+	smallclass		SludgeChunk
+	smallclip		12
+	smallsound		world/sludgegloop
+
+	baseclass		SludgeSplash
+	chunkclass		SludgeChunk
+	chunkxvelshift	8
+	chunkyvelshift	8
+	chunkzvelshift	8
+	chunkbasezvel	1
+	sound			world/sludgegloop
+}
+
+splash Hot
+{
+	noalert
+	smallclass		LavaSmoke
+	smallclip		12
+	smallsound		world/hotsiz
+
+	baseclass		SlimeChunk
+	chunkclass		LavaSmoke
+	chunkxvelshift	-1
+	chunkyvelshift	-1
+	chunkzvelshift	7
+	chunkbasezvel	1
+	sound			world/hotsiz
+}
+
+terrain Lava
+{
+	splash			Lava
+	footclip		10
+	liquid
+}
+
+terrain Blood
+{
+	splash			Blood
+	footclip		10
+	liquid
+}
+
+terrain Nuke
+{
+	splash			Nuke
+	footclip		10
+	liquid
+}
+
+terrain Slime
+{
+	splash			Slime
+	footclip		10
+	liquid
+}
+
+terrain Hot
+{
+	splash			Hot
+	footclip		0
+	liquid
+}
+
+ifdoom
+floor BLOOD1 Blood
+floor BLOOD2 Blood
+floor BLOOD3 Blood
+floor SLIME01 Slime
+floor SLIME02 Slime
+floor SLIME03 Slime
+floor SLIME04 Slime
+floor SLIME05 Slime
+floor SLIME06 Slime
+floor SLIME07 Slime
+floor SLIME08 Slime
+floor NUKAGE1 Nuke
+floor NUKAGE2 Nuke
+floor NUKAGE3 Nuke
+floor FWATER1 Water
+floor FWATER2 Water
+floor FWATER3 Water
+floor FWATER4 Water
+floor LAVA1 Lava
+floor LAVA2 Lava
+floor LAVA3 Lava
+floor LAVA4 Lava
+floor RROCK05 Hot
+floor RROCK06 Hot
+floor RROCK07 Hot
+floor RROCK08 Hot
+floor SLIME09 Hot
+floor SLIME10 Hot
+floor SLIME11 Hot
+floor SLIME12 Hot
+endif

@@ -1,0 +1,2 @@
+STARTUPTITLE = "Naku-Naru build V1.3"
+STARTUPCOLORS = "ff0000", "000000"

@@ -1,0 +1,51 @@
+
+skill baby
+{
+	ACSReturn = 0
+    EasyBossBrain
+	SpawnFilter = Easy
+	Name = "Power Fantasy"
+	MustConfirm = "Never played a shooter, huh?"	
+    PlayerClassName = "NewPlayer", "Return to Serenity" // Testament
+    TextColor = white
+}
+
+skill easy
+{
+	ACSReturn = 1
+	EasyBossBrain
+	SpawnFilter = easy
+	Name = "Souls Collector"
+    PlayerClassName = "NewPlayer", "Never Say Die" // Black Sabbath
+    TextColor = grey
+}
+
+skill normal
+{
+	ACSReturn = 2
+	SpawnFilter = Normal
+	Name = "Take No Prisoners"
+    PlayerClassName = "NewPlayer", "Take No Prisoners" // Megadeth
+    TextColor = darkgrey
+}
+
+skill hard
+{
+	ACSReturn = 3
+	SpawnFilter = Hard
+	Name = "Symphony of Destruction"
+    PlayerClassName = "NewPlayer", "Symphony of Destruction" //Megadeth
+    TextColor = black
+}
+
+skill nightmare
+{
+	ACSReturn = 4
+	FastMonsters
+	SpawnFilter = Nightmare
+	Name = "South of Heaven."
+    PlayerClassName = "NewPlayer", "South of Heaven" //Slayer
+	MustConfirm = "Mercy Be unto those who go down this path. Press Y to continue."
+    TextColor = red
+	Aggressiveness = 0.55
+}

@@ -1,0 +1,227 @@
+
+$Random weapons/shell2  { C7621 C7622 C7623 }
+
+C7621	762-1
+C7622	762-2
+C7623	762-3
+
+$Random weapons/shell3 { C12GA1 C12GA2 C12GA3 }
+
+C12GA1	12GA-1
+C12GA2	12GA-2
+C12GA3	12GA-3
+
+$Random weapons/shell4  { C451 C453 }
+
+C451	45-1
+C453	45-3
+C45D	45-2
+
+world/drip				dsempty
+world/watersplash		dssplash
+world/watersplashsmall	dssplsml
+world/sludgegloop		dsploosh
+world/sludgegloopsmall	dsplosml
+world/lavasizzle		dslvsiz
+world/lavsiz2			dslvsiz2
+world/lavasizzlesmall	dslavsml
+
+berserk/activate 	VICTORY
+
+revolver/fire	NAMBFIR
+revolver/open	SHELOPN
+revolver/shellin	SHELINS
+revolver/close	SHELCLS
+revolver/cock	HAMCOCK
+
+enemy/load ENEMLOD
+
+type96/fire	TYPFIRE
+type96/loop	TYPLOOP
+type96/end TYPEEND
+type96/magout TYPEOUT
+type96/magins TYPEINS
+type96/boltback	TYPEBAC
+type96/boltrel	TYPEFOR
+
+$random type89/fire {scr1 scr2 scr3}
+type89/loop	SCRLOOP
+type89/end SCAREND
+
+scr1	SCARFIR
+scr2 	SCARFI2
+scr3	SCARFI3
+
+
+1887/fire	SHOTTP
+1887/pumpback	PUMPBCK
+1887/pumpfor	PUMPFOS
+1887/insertshell SHELLINS
+
+menu/activate			BLIP3	// Activate a new menu
+menu/backup			BLIP1	// Backup to previous menu
+menu/prompt			BLIP1	// Activate a prompt "menu"
+menu/cursor			BLIP1		// Move cursor up/down
+menu/change			BLIP2	// Select new value for option
+menu/invalid			dsoof		// Menu not available
+menu/dismiss			BLIP2	// Dismiss a prompt message
+menu/choose			BLIP4	// Choose a menu item
+menu/clear			BLIP4	// Close top menu
+
+$Random SHELLINS {ins1 ins2 ins3 ins4} 
+
+ins1	INS1
+ins2	INS2
+ins3	INS3
+ins4	INS4
+
+$Random staff/swing	{ SWING1 SWING2 SWING3 SWING4 }
+
+SWING1	SWING1
+SWING2	SWING2
+SWING3	SWING3
+SWING4	SWING4
+
+$random staff/hitenemy { sthit1 sthit2 sthit3 sthit4 sthit5 }
+
+sthit1	STAHI1
+sthit2	STAHI2
+sthit3	STAHI3
+sthit4	STAHI4
+sthit5	STAHI5
+
+$random staff/hitworld { walhit1 walhit2 walhit3 walhit4 }
+walhit1	KNIFWA1
+walhit2	KNIFWA2
+walhit3 KNIFWA3
+walhit4 KNIFWA4
+
+death1	DEATH1
+death2	DEATH2
+death3	DEATH3
+death4	DEATH4
+hurt1	HURT1
+hurt2	HURT2
+hurt3	HURT3
+hurt4	HURT4
+
+Flamethrower/Fire	FMTRFIRE
+Flamethrower/Hit	FMTRHIT
+Flamethrower/Flame	FMTRFLAM
+
+pickup/misc MISCUP
+pickup/armor ARMRUP
+pickup/armorbig ARM2UP
+
+skull/ignite FMTRHIT
+skull/loop UNMKLPS
+yorick/explode YOREXPL
+yorick/holster HOLSTER
+$random yorick/throw { THROW1 THROW2 }
+THROW1 THROW1
+THROW2 THROW2
+
+$random player/openingline { START1 START2 START3 START4 }
+START1 START1
+START2 START2
+START3 START3
+START4 START4
+
+$random playerdeath { death1 death2 death3 death4 }
+
+$random playerpain { hurt1 hurt2 hurt3 hurt4 }
+
+$playeralias player male *death playerdeath
+$playeralias player male *pain100 playerpain
+$playeralias player male *pain75 playerpain
+$playeralias player male *pain50 playerpain
+$playeralias player male *pain25 playerpain
+
+staff/butthit	KICKWAL
+
+smg/loop	PM9LOOP
+smg/end		PM9END
+smg/magout	UZI1OUT
+smg/magin	UZI1INS
+smg/boltback 	UZIPULL	
+smg/fire	UZIIFIR
+smg/boltrel UZIRELS
+
+type99/fire	TYPEFIR
+type99/boltback	BOLTBCK
+type99/boltfor	BOLTFOR
+type99/rifleload	LOADRIF
+$random type99/charge { SC1 SC2 SC3 }
+
+SC1 MELEE1
+SC2 MELEE2
+SC3 MELEE3
+
+gustav/fire	SPALAUN
+gustav/load1	SPLOAD1
+gustav/load2	SPLOAD2
+
+Weapon/Raise	SELECT
+
+staff/unsheath	STSELE
+
+weapon/pickup	WPNUP
+
+weapons/empty	WEAPDRY
+
+pistol/fire PISFIRE
+
+AK/fire AKFIRE
+
+shotgun/fire SGFIRE
+
+shotgun/pfor PUMPBACK
+
+shotgun/pback PUMPFOR
+
+$random cock/begin {cock1 cock2}
+
+cock1 COCKBR
+
+cock2 COCKBR2
+
+weapon/pickup PICKUP
+
+$RANDOM weapons/ricochet { ric1 ric2 ric3 }
+
+ric1 DSWALL1
+ric2 DSWALL2
+ric3 DSWALL3
+
+$Random Bullet/HitFlesh { fleshimp1 fleshimp2 }
+
+fleshimp1 DSFLES1
+fleshimp2 DSFLES2
+
+$Random weapons/shell2  { C7621 C7622 C7623 }
+
+C7621	762-1
+C7622	762-2
+C7623	762-3
+
+$Random weapons/shell3 { C12GA1 C12GA2 C12GA3 }
+
+C12GA1	12GA-1
+C12GA2	12GA-2
+C12GA3	12GA-3
+
+$Random weapons/shell4  { C451 C453 }
+
+C451	45-1
+C453	45-3
+C45D	45-2
+
+world/drip				dsempty
+world/watersplash		dssplash
+world/watersplashsmall	dssplsml
+world/sludgegloop		dsploosh
+world/sludgegloopsmall	dsplosml
+world/lavasizzle		dslvsiz
+world/lavsiz2			dslvsiz2
+world/lavasizzlesmall	dslavsml
+
