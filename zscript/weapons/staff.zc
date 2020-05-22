@@ -1,0 +1,157 @@
+/*
+	{			THE CRESCENT BLADE.				}
+
+
+	FEAR. 
+
+From the darkest, deepest depths of the underworld, this blade of woe will make
+even the most cruel of monsters quiver in terror from it's great power.
+It's small enough to have another weapon in hand and still use, but with such a punch most enemies
+will falter quickly to it's might. Keep it close in hand.   
+*/
+
+class MeleeCounter : Inventory
+{
+    Default
+    {
+        +INVENTORY.IGNORESKILL 
+        Inventory.MaxAmount 6;
+        Inventory.Icon "TNT1A0";
+    }
+}
+
+
+class CStaff : NAKUWEAPON
+{
+	Default
+	{
+		Weapon.Kickback 100;
+		Weapon.SlotNumber 1;
+		Inventory.PickupMessage "[1]THE CRESCENT STAFF.";
+		+WEAPON.MELEEWEAPON;
+		+WEAPON.AMMO_OPTIONAL;
+		+WEAPON.NOALERT;
+		+WEAPON.NOAUTOFIRE;
+		Weapon.Slotnumber 1;
+		Tag "Staff.";		
+		Weapon.UpSound "staff/unsheath";
+		}
+		
+		States
+		{
+
+		deselect:
+			HANS A 1; 
+			TNT1 A 0 A_Lower;
+			WAIT;
+		
+	Fire:	
+		HKSL A 2 Offset(1,30);
+		HKSL B 1 Offset(1,30);	
+		FIRE1:
+		TNT1 A 4;	
+		BLAD A 1 A_PlaySound("staff/swing", CHAN_AUTO);
+		BLAD B 1 A_CustomPunch(15, FALSE, 0,"Knife_Puff");
+		BLAD C 1 ;
+		BLAD D 1  A_JumpIf((GetPlayerInput (INPUT_BUTTONS) & BT_ATTACK),"Combo1g");
+		TNT1 A 4 A_JumpIf((GetPlayerInput (INPUT_BUTTONS) & BT_ATTACK),"Combo1g");			
+		HKSL B 1 Offset(1,30);
+		HKSL A 1 Offset(1,30);
+		TNT1 A 0 Offset(1,30);	
+		goto ready;
+	
+	Combo1g:
+		TNT1 A 2;
+		TNT1 A 1;
+		BLA2 A 1  A_PlaySound("staff/swing", CHAN_AUTO);
+		BLA2 B 1 ;
+		BLA2 C 1 A_CustomPunch(15, FALSE, 0,"Knife_Puff");
+		BLA2 D 1 A_JumpIf((GetPlayerInput (INPUT_BUTTONS) & BT_ATTACK),"Combo2g");
+		TNT1 A 4 A_JumpIf((GetPlayerInput (INPUT_BUTTONS) & BT_ATTACK),"Combo2g");	
+		TNT1 A 0 A_GiveInventory("MeleeCounter",1);			
+		HKSL B 1 Offset(1,30);
+		HKSL A 1 Offset(1,30);
+		TNT1 A 0 Offset(1,30);	
+		goto ready;
+	
+	Combo2g:
+		TNT1 A 2 Offset(1,30);
+		BLA3 A 1  A_PlaySound("staff/swing", CHAN_AUTO);
+		BLA3 B 1  A_CustomPunch(25, FALSE, 0,"Knife_Puff");
+		BLA3 C 1 ;
+		BLA3 D 1 ;
+		BLA3 E 1 A_JumpIf((GetPlayerInput (INPUT_BUTTONS) & BT_ATTACK),"Combo3g");
+		TNT1 A 4 A_JumpIf((GetPlayerInput (INPUT_BUTTONS) & BT_ATTACK),"Combo3g");	
+		TNT1 A 0;	
+		HKSL B 1 Offset(1,30);
+		HKSL A 1 Offset(1,30);
+		TNT1 A 0 Offset(1,30);	
+		goto ready;	
+	
+	Combo3g:
+		TNT1 A 2 Offset(1,30);
+		BLA4 A 1  A_PlaySound("staff/swing", CHAN_AUTO);
+		BLA4 B 1  A_CustomPunch(25, FALSE, 0,"Knife_Puff");
+		BLA4 C 1 ;
+		BLA4 D 1 A_JumpIf((GetPlayerInput (INPUT_BUTTONS) & BT_ATTACK),"EndCombo1g");
+		BLA4 E 1 A_JumpIf((GetPlayerInput (INPUT_BUTTONS) & BT_ATTACK),"EndCombo1g");
+		BLA4 F 1 A_JumpIf((GetPlayerInput (INPUT_BUTTONS) & BT_ATTACK),"EndCombo1g");
+		TNT1 A 4 A_JumpIf((GetPlayerInput (INPUT_BUTTONS) & BT_ATTACK),"EndCombo1g");	
+		TNT1 A 0 ;	
+		HKSL B 1 Offset(1,30);
+		HKSL A 1 Offset(1,30);
+		TNT1 A 0 Offset(1,30);	
+		goto ready;		
+	
+	EndCombo1g:
+		TNT1 A 0 A_JumpIf((GetPlayerInput (INPUT_BUTTONS) & BT_ATTACK),"Combo1g");
+		TNT1 A 2;
+		STAF I 0 A_PlaySound("staff/swing", CHAN_AUTO);	
+		BLAC A 1;
+		BLAC B 1;
+		BLAC C 1;
+		BLAC D 1;
+		TNT1 A 0 A_CustomPunch(35, FALSE, 0,"Knife_Puff");		
+		BLAC E 1;
+		BLAC F 2;
+		BLAC G 2;
+		BLAC H 2  A_weaponready(WRF_NOSECONDARY);
+		BLAC I 1  A_weaponready(WRF_NOSECONDARY);
+		BLAC J 1 A_weaponready(WRF_NOSECONDARY);	
+		TNT1 A 4  A_weaponready(WRF_NOSECONDARY);	
+		HKSL B 1 Offset(1,30);
+		HKSL A 1 Offset(1,30);
+		TNT1 A 0 Offset(1,30);		
+		goto ready;
+	
+		
+	READY:
+		HANS A 1 A_Weaponready;
+		Loop;
+	
+	SELECT:
+		TNT1 A 0 Setplayerproperty(0,1,2);
+		TNT1 A 4;
+		OPEN ABCDEF 1;
+		TNT1 A 8;
+		HKSL B 1 Offset(1,30);
+		HKSL A 1 Offset(1,30);
+		GOTO READY;
+		
+	}
+}	
+
+	/*
+	TNT1 A 2 A_ChangeVelocity(20,0,5,CVF_REPLACE|CVF_Relative);
+	KICK A 1  A_PlaySound("staff/swing", CHAN_AUTO);
+	KICK B 1  A_CustomPunch(15, FALSE, 0,"END_Puff");
+	KICK C 6 ;
+	KICK D 1 ;
+	KICK E 1 ;
+	KICK F 1 ;
+	TNT1 A 4;	
+	TNT1 A 0 A_Refire();	
+	HKSL B 1 Offset(1,30);
+	HKSL A 1 Offset(1,30);
+	TNT1 A 0 Offset(1,30);	
+	*/

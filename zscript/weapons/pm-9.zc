@@ -1,0 +1,182 @@
+/*
+	{			Minebea PM-9 Submachine Gun			}
+
+	Oooh, we got an obscure one!
+		
+		
+	Popular with both the Japanese Armed Forces and the Yakuza, the Minebea 
+	PM-9 is a highly effective and fast firing SMG. A variant of the  
+	legendary uzi, its fire rate is somewhere between the mini and micro.
+	1100 RPM is little to scuff at, especially in such a compact size. Small
+	enough to use in one hand, it's highly effective for croud control, and allows
+	you to slice up any nearby enemies if they get too close.
+				
+*/
+
+class PM9 : NAKUWEAPON replaces Chaingun
+{
+	Default
+	{
+		Weapon.AmmoType "Ammo9mm";
+		Weapon.AmmoType2 "PM9Magazine";		
+		Weapon.Kickback 50;
+		Weapon.AmmoUse 0;
+		Weapon.AmmoGive 40;		
+		Inventory.PickupMessage "[4]Minebea PM-9 - 9x19mm";
+		Weapon.Slotnumber 4;	
+		Scale 0.8;
+		+WEAPON.NOAUTOFIRE;			
+		Tag "PM-9.";
+		+weapon.NOALERT;
+		+WEAPON.NOAUTOAIM;		
+		}
+		States
+		{
+		
+			deselect:
+			TNT1 A 0 A_Lower;
+			loop;	
+				
+  Spawn:
+    MUZP A -1;
+    stop;	
+	
+		Noammo:
+			PMS9 A 2 A_playsound("weapons/empty",1);
+			PMS9 A 1 Offset(1,30);
+			PMS9 A 1 Offset(3,30);
+			PMS9 A 2 Offset(1,30);			
+			TNT1 A 0;
+			goto ready;
+			
+	fire:
+		TNT1 A 0 A_JumpIfInventory("PM9Magazine",1,1);				
+		Goto NoAmmo;
+		TNT1 A 0 A_AlertMonsters();	
+	
+		PSMF A 1 {
+		A_Firebullets(3,3,1,9,"Bulletpuff");	
+		A_PlaySound("smg/fire",1);
+		A_CasingSMG();
+		A_SingleSmoke();
+		A_AutoRecoil();
+		A_Gunflash();
+		A_TakeInventory("PM9Magazine",1);	
+		}	
+	
+		PSMF B 1 Bright; 	
+		TNT1 A 0 A_Refire;
+		PSMF CDEF 1; 		
+		goto ready;	
+		
+	hold:	
+		TNT1 A 0 A_JumpIfInventory("PM9Magazine",1,1);
+		goto NoAmmo;
+		PSFL A 1 BRIGHT {
+		A_AlertMonsters();		
+		A_Firebullets(3,3,1,9,"Bulletpuff");				
+		A_PlaySound("smg/loop",1,1,1);	
+		A_CasingSMG();
+		A_SingleSmoke();
+		A_AutoRecoil();
+		A_Gunflash();
+		A_TakeInventory("PM9Magazine",1);	
+		let psp = player.FindPSprite(PSP_Weapon); //get pointer to the weapon sprite
+		if (psp) //check it's not null in case player died
+			psp.frame = random(0,4); //pick randomly between A, B, C or D — 0 corresponds to A and so on
+		//Thanks Jekyll!		
+	
+		}	
+	
+		PSMF B 1 Bright; 	
+		TNT1 A 0 A_Refire;
+		PSMF C 1 ;
+		TNT1 A 0 A_Stopsound(1);
+		TNT1 A 0 A_Playsound("smg/end");
+		PSMF DEF 1 ;
+		goto ready;
+		
+	ALTFIRE:
+		TNT1 A 0 A_Overlay(-1,"Melee", 0);
+		PSS9 ABCDEDB 1;	
+ 
+		GOTO READY;
+				
+	MELEE:
+		TNT1 A 0 A_JumpifInventory("swingcheck",1,"Melee2");
+		TNT1 A 0 A_GiveInventory("swingcheck",1);			
+		MELE E 1  A_PlaySound("staff/swing", CHAN_AUTO);
+		MELE F 1 A_CustomPunch(15, FALSE, 0,"Knife_Puff"); 
+		TNT1 A 0 A_Weaponready();		
+		MELE G 1 A_Weaponready();
+		MELE H 1 A_Weaponready(); 
+
+		goto ALTIDLE;
+	
+	MELEE2:	
+		MELE A 1  A_PlaySound("staff/swing", CHAN_AUTO);
+		TNT1 A 0 A_TakeInventory("swingcheck",1);			
+		MELE B 1  A_CustomPunch(15, FALSE, 0,"Knife_Puff"); 
+		TNT1 A 0 A_Weaponready();			
+		MELE C 1 A_Weaponready();
+		MELE D 1 A_Weaponready();
+ 
+
+		goto ALTIDLE;
+	
+	ALTIDLE:	
+		TNT1 A 1 A_WeaponReady(WRF_NOPRIMARY);
+ 
+		loop;
+		
+	ready:
+		PMS9 ABCDEFEDCBA 4 A_Weaponready(WRF_ALLOWRELOAD);
+		Loop;
+			
+	reload:
+		TNT1 A 0 A_JumpIfInventory("PM9Magazine",40,"Ready");
+		TNT1 A 0 A_JumpIfInventory("PM9Magazine", 40, "ReloadFinish");
+		TNT1 A 0 A_JumpIfInventory("Ammo9mm", 1, "ProperReload");
+		PMSR A 1 A_PlaySound("weapon/draw");
+		PMSR ABCDE 1;
+		PMSR F 2 ;
+		PMSR G 1 A_PlaySound("smg/magout");
+		PMSR HIJKLMNOPQRSTU 1;
+		PMSR V 1 A_PlaySound("smg/magin") ;
+		PMSR W 2;
+		PMSR XYZ 1;
+		PMRR A 1;
+		PMRR B 2;
+		PMRR C 2  A_PlaySound("smg/boltback");
+		PMRR D 1;
+		PMRR E 1  A_PlaySound("smg/boltrel");
+		PMRR FGHIJ 1;		
+		ReloadRepeat:
+			TNT1 A 0 A_JumpIfInventory("PM9Magazine", 40, "ReloadFinish");
+			TNT1 A 0 A_JumpIfInventory("Ammo9mm", 1, 1);
+			Goto ReloadFinish;
+			TNT1 A 0 A_GiveInventory("PM9Magazine", 1);
+			TNT1 A 0 A_Takeinventory("Ammo9mm",1);
+			Goto ReloadRepeat;
+		ReloadFinish:
+	 
+			Goto Ready;
+			
+select:
+	TNT1 A 0 Setplayerproperty(0,1,2);
+	TNT1 A 4 A_PlaySound("weapon/draw", CHAN_AUTO);
+	SELP ABCDEFGH 1;
+	goto ready;
+	}
+}
+
+Class PM9Magazine : Ammo
+{
+	Default
+	{
+	Inventory.Amount 40;
+	Inventory.MaxAmount 40;
+	Ammo.BackpackAmount 0;
+	Ammo.BackpackMaxAmount 40;
+}
+}

@@ -1,0 +1,248 @@
+Actor Stimbonus : Health replaces HealthBonus
+{
+	+COUNTITEM
+	+INVENTORY.ALWAYSPICKUP
+	Inventory.Pickupmessage "Bonus - (+2 Health)"
+	Inventory.Amount 2
+	Inventory.MaxAmount 200
+	Scale 1
+	States
+	{
+	Spawn:
+		TNT1 A 0 A_JUMP(128,"SPAWN2")
+		TNT1 A 0 A_JUMP(128,"SPAWN3")		
+		FOD1 A -1
+		stop
+		
+	SPAWN2:
+		FOD1 B -1
+		stop
+	
+	SPAWN3:
+		FOD1 C -1
+		stop	
+	}
+}
+
+Actor Potion : Health replaces Stimpack
+{
+Inventory.Amount 15
+Inventory.PickupMessage "Potion - (+15 Health)"
+	states
+	{
+	Spawn:
+	TNT1 A 0 A_Jump(128,"Spawn2")
+	TNT1 A 0 A_Jump(128,"Spawn3")	
+	MED1 A -1
+	Stop
+	
+	Spawn2:
+	MED1 B -1
+	Stop
+	
+	Spawn3: 
+	MED1 C -1
+	Stop
+	} 
+}
+
+Actor MedKit : Health replaces MediKit
+{
+Inventory.Amount 25
+Inventory.PickupMessage "Medkit - (+25 Health)"
+	states
+	{
+	Spawn:
+	MEDI A -1
+	Stop
+	
+	} 
+}
+
+Actor KevlarVest : BasicArmorPickup replaces GreenArmor
+{
+  Radius 20
+  Height 16
+  Inventory.PickupMessage "Light Armor - (+100 Armor)" 
+  Inventory.Icon "AMR1A0"
+  Inventory.pickupsound "pickup/armorbig"
+  Armor.SavePercent 33.335
+  Armor.SaveAmount 100
+  States
+  {
+  Spawn:
+  AMR1 A -1
+  Stop
+  }
+}
+
+
+
+Actor TacticalKevlar : BasicArmorPickup replaces BlueArmor
+{
+  Radius 20
+  Height 16
+  Inventory.PickupMessage "Heavy Armor - (+200 Armor)"
+  Inventory.Icon "AMR2A0"
+  Inventory.pickupsound "pickup/armorbig"
+  Armor.SavePercent 50
+  Armor.SaveAmount 200
+  States
+  {
+  Spawn:
+    AMR2 A -1
+    Stop
+  }
+}
+
+Actor AMRShard : BasicArmorBonus replaces Armorbonus
+{
+  Radius 20
+  Height 16
+  Inventory.PickupMessage "Armor Bonus - (+2 Armor)"
+  Inventory.Icon "BONND0"
+  Inventory.pickupsound "pickup/armor"
+  Armor.SavePercent 33.335
+  Armor.SaveAmount 2
+  Armor.MaxSaveAmount 200
+  +COUNTITEM
+  +INVENTORY.ALWAYSPICKUP
+  States
+  {
+	spawn:
+		BONN A 6
+		BONN B 6
+		BONN C 6
+		BONN D 10
+		BONN C 6
+		BONN B 6
+		BONN A 6
+		Loop
+  
+  }
+} 
+
+Actor CombatPack : Backpackitem replaces Backpack
+{
+  +CountItem
+  +Inventory.AlwaysPickup
+  Inventory.PickupMessage "You got a combat pack"
+  Inventory.PickupSound "misc/i_pkup"
+  States
+  {
+  Spawn:
+    BKPK A -1
+    Loop
+  Pickup:
+    TNT1 A 0 A_GiveInventory("Backpack", 1)
+    TNT1 A 0 A_GiveInventory("Shells12Gauge", 16)
+    TNT1 A 0 A_GiveInventory("ammo9mm", 30)
+    TNT1 A 0 A_GiveInventory("ammo84mm", 4)
+    TNT1 A 0 A_GiveInventory("ammo44", 12)
+    Stop
+  }
+}
+
+//Notes, the bloodlust sphere give double damage, higher speed and drains enemy health
+//it lasts for a total of 45 seconds, it also boosts health and armor by 50  -hnsolo77
+
+//BloodLustSphere start
+actor PowerBloodLustDamage : PowerDamage
+{
+damagefactor "normal", 2
+}
+actor BloodlustSphere : CustomInventory replaces Berserk 
+{
+inventory.pickupmessage "BloodLust! Double Damage and heightened Speed!"
+inventory.maxamount 0
+inventory.pickupsound "berserk/activate"
++INVENTORY.FANCYPICKUPSOUND
++INVENTORY.AUTOACTIVATE
++COUNTITEM
++INVENTORY.ALWAYSPICKUP
+states
+{
+Spawn:
+BLST ABCD 6 BRIGHT
+loop
+Pickup:
+TNT1 A 0 A_GiveInventory("BloodlustDamageActivate",1)
+TNT1 A 0 A_GiveInventory("BloodlustSphereHealth",1)
+TNT1 A 0 A_GiveInventory("BloodlustSphereDrain",1)
+TNT1 A 0 A_GiveInventory("BloodlustSphereSpeed",1)
+TNT1 A 0 A_GiveInventory("BloodLustSphereArmor",1)
+stop
+}
+}
+actor BloodlustDamageActivate : PowerupGiver
+{
+inventory.pickupmessage ""
+powerup.type "BloodLustDamage"
+powerup.color red 0.3
+inventory.maxamount 0
+powerup.duration 1575
+inventory.pickupsound ""
++INVENTORY.AUTOACTIVATE
++COUNTITEM
++INVENTORY.ALWAYSPICKUP
+states
+{
+Spawn:
+TNT1 A -1
+stop
+}
+}
+actor BloodlustSphereHealth : Health 
+{
+inventory.pickupmessage ""
+inventory.amount 50
+inventory.maxamount 200
++INVENTORY.AUTOACTIVATE
+-COUNTITEM
++INVENTORY.ALWAYSPICKUP
+states
+{
+Spawn:
+TNT1 A -1
+stop
+}
+}
+actor BloodlustSphereDrain : PowerupGiver
+{
+inventory.pickupmessage ""
+powerup.type "Drain"
+powerup.duration 1575
+inventory.maxamount 0
++INVENTORY.AUTOACTIVATE
+-COUNTITEM
++INVENTORY.ALWAYSPICKUP
+states
+{
+Spawn:
+TNT1 A -1
+stop
+}
+}
+actor BloodlustSphereSpeed : PowerupGiver
+{
+inventory.pickupmessage ""
+powerup.type "Speed"
+powerup.duration 1575
+inventory.maxamount 0
++INVENTORY.AUTOACTIVATE
+-COUNTITEM
++INVENTORY.ALWAYSPICKUP
+states
+{
+Spawn:
+TNT1 A -1
+stop
+}
+}
+actor BloodLustSphereArmor : BlueArmor
+{
+inventory.pickupmessage ""
+Armor.SavePercent 50
+Armor.SaveAmount 50
+}
+//BloodlustSphere end

@@ -1,0 +1,208 @@
+/*
+	{			Yorick.			}
+
+	Let me see. (takes the skull) Alas, poor Yorick! 
+	I knew him, Horatio, a fellow of infinite jest, of most excellent fancy. 	
+	He hath borne me on his back a thousand times, and now, how abhorred in my 
+	imagination it is!
+	
+	
+	Very Limited Inventory Space due to sheer power, Use very carefully.
+	Does an Imemense amount of Damage in a Single attack.
+			
+*/
+
+class Yorick : NAKUWEAPON replaces BFG9000
+{
+	Default
+	{
+		weapon.ammotype "TotalSkulls";
+		Weapon.Kickback 50;
+		Weapon.AmmoUse 0;
+		Weapon.AmmoGive 1;		
+		Inventory.PickupMessage "[7]Yorick.";
+		Weapon.Slotnumber 7;	
+		Tag "Yorick.";
+		+WEAPON.BFG;
+		+WEAPON.EXPLOSIVE;
+		Scale 0.8;
+		}
+		States
+		{
+			Spawn:
+		SKRL ABCD 12;
+		LOOP;
+	Select:
+	TNT1 A 0 A_JumpIfInventory("TotalSkulls",1,1);
+	goto takeskull;	
+		TNT1 A 0 Setplayerproperty(0,1,2);			
+		TNT1 A 4;
+		UKUS A 2 ;
+		UKUS B 1 ;
+		UKUS C 1 ;
+		UKUS D 1 ;
+		UKUS E 1 ;
+		UKUS F 1 ;
+		UKUS G 1 ;
+		UKUS H 2;
+		UKUS I 2;
+		UKUS J 1;
+		UKUS K 1;
+		UKUS L 2;
+		UKUL A 1;
+		TNT1 A 0 BRIGHT A_GiveInventory("PrimeSkull", 1);
+		UKUP A 1 BRIGHT;
+		UKUP B 1 BRIGHT;
+		UKUP C 1 BRIGHT A_playsound("skull/ignite",1);
+		UKUP D 1 BRIGHT;
+		UKUP E 1 BRIGHT;
+		UKUP F 1 BRIGHT;
+		UKUP G 1 BRIGHT;
+		UKUP H 1 BRIGHT;
+		UKUP I 1 BRIGHT;
+		UKUP J 1 BRIGHT;		
+		TNT1 A 0 A_Raise;	
+		goto ready;
+	Ready:
+		UKUF A 4 bright A_Weaponready();
+		UKUF B 4 bright A_Weaponready();
+		UKUF C 4 bright A_Weaponready();
+		UKUF D 4 bright A_Weaponready();
+		UKUF E 4 bright A_Weaponready();
+		UKUF F 4 bright A_Weaponready();
+		UKUF G 4 bright A_Weaponready();
+		UKUF H 4 bright A_Weaponready();
+		UKUF I 4 bright A_Weaponready();
+		UKUF J 4 bright A_Weaponready();	
+		LOOP;		
+		
+	TakeSkull:
+	TNT1 A 0 A_TakeInventory("Yorick");
+	stop;
+		
+	Fire:
+		SKFL A 1 bright a_playsound("yorick/holster",1);		
+		SKFL B 1 bright;
+		SKFL C 1 bright;
+		SKFL D 2 bright;
+		SKFL E 1 bright A_PlaySound("yorick/throw", 1);
+		SKFL F 1 bright;
+		SKFL G 1 BRIGHT;
+		SKFL H 1 bright A_FireProjectile("SKULLPROJECTILE");		
+		SKFL I 1 BRIGHT;
+		SKFL J 1 BRIGHT;
+		SKFL K 1 ;		
+		TNT1 A 4 A_TakeInventory("TotalSkulls",1); 
+		goto select;
+
+	Deselect:
+		TNT1 A 0 A_Lower;
+		TNT1 A 0 A_TakeInventory("PrimeSkull",1);
+		Wait;
+		}
+}		
+
+
+Class TotalSkulls : Ammo
+{
+	Default
+	{
+	Inventory.Amount 4;
+	Inventory.MaxAmount 4;
+	Ammo.BackpackAmount 1;
+	Ammo.BackpackMaxAmount 6;
+}
+}
+
+class PrimeSkull : Inventory 
+	{
+		Default
+			{
+				Inventory.MaxAmount 1;
+				}
+	}
+	
+Class SKULLPROJECTILE : Actor
+{
+  Default
+  {
+  Radius 2;
+  Height 4;
+  Speed 85;
+  Damage 800;
+  Projectile;
+  RenderStyle "Add";
+  DamageType "Fire";
+  +DEHEXPLOSION;
+  +FORCEPAIN;
+  +BRIGHT;
+  +BLOODSPLATTER;
+  +FORCEPAIN;
+  Scale 1.2;
+  SeeSound "Flamethrower/Fire";
+  DeathSound "yorick/explode";
+  }
+  States
+  {
+  Spawn:
+    SKRL DE 2 bright ;
+    FRFX NO 2 bright;
+    Loop;
+  Death:
+	TNT1 A 0 A_SetScale(6,6);
+	TNT1 A 0 A_SetTranslucent(0.7);
+	EXPS A 1 BRIGHT A_Explode(300,512,0);
+		TNT1 A 0 {
+           if (GetCvar("weapon_particle_toggle") == 1)
+            {		
+				A_SpawnProjectile ("Carl_Rocket_trail3", 0, 0, random (0, 360), 2, random (0, 360));				
+				A_SpawnProjectile ("SmokeSpawner2", 0, 0, random (0, 360), 2, random (0, 360));	
+				A_SpawnProjectile ("Carl_Rocket_Trail2", 0, 0, random (0, 360), 2, random (0, 360));				
+				A_SpawnProjectile ("SmokeSpawner2", 0, 0, random (0, 360), 2, random (0, 360));	
+				A_SpawnProjectile ("Carl_Rocket_Trail3", 0, 0, random (0, 360), 2, random (0, 360));				
+				A_SpawnProjectile ("SmokeSpawner2", 0, 0, random (0, 360), 2, random (0, 360));	
+				A_SpawnProjectile ("Carl_Rocket_Trail2", 0, 0, random (0, 360), 2, random (0, 360));				
+				A_SpawnProjectile ("SmokeSpawner2", 0, 0, random (0, 360), 2, random (0, 360));					
+				A_SpawnProjectile ("Carl_Rocket_Trail3", 0, 0, random (0, 360), 2, random (0, 360));				
+				A_SpawnProjectile ("SmokeSpawner2", 0, 0, random (0, 360), 2, random (0, 360));	
+				A_SpawnProjectile ("Carl_Rocket_Trail2", 0, 0, random (0, 360), 2, random (0, 360));				
+				A_SpawnProjectile ("SmokeSpawner2", 0, 0, random (0, 360), 2, random (0, 360));	
+				A_SpawnProjectile ("Carl_Rocket_Trail3", 0, 0, random (0, 360), 2, random (0, 360));				
+				A_SpawnProjectile ("SmokeSpawner2", 0, 0, random (0, 360), 2, random (0, 360));	
+				A_SpawnProjectile ("Carl_Rocket_Trail2", 0, 0, random (0, 360), 2, random (0, 360));		
+				A_SpawnProjectile ("Carl_Rocket_trail3", 0, 0, random (0, 360), 2, random (0, 360));				
+				A_SpawnProjectile ("SmokeSpawner2", 0, 0, random (0, 360), 2, random (0, 360));	
+				A_SpawnProjectile ("Carl_Rocket_Trail2", 0, 0, random (0, 360), 2, random (0, 360));				
+				A_SpawnProjectile ("SmokeSpawner2", 0, 0, random (0, 360), 2, random (0, 360));	
+				A_SpawnProjectile ("Carl_Rocket_Trail3", 0, 0, random (0, 360), 2, random (0, 360));				
+				A_SpawnProjectile ("SmokeSpawner2", 0, 0, random (0, 360), 2, random (0, 360));	
+				A_SpawnProjectile ("Carl_Rocket_Trail2", 0, 0, random (0, 360), 2, random (0, 360));				
+				A_SpawnProjectile ("SmokeSpawner2", 0, 0, random (0, 360), 2, random (0, 360));					
+				A_SpawnProjectile ("Carl_Rocket_Trail3", 0, 0, random (0, 360), 2, random (0, 360));				
+				A_SpawnProjectile ("SmokeSpawner2", 0, 0, random (0, 360), 2, random (0, 360));	
+				A_SpawnProjectile ("Carl_Rocket_Trail2", 0, 0, random (0, 360), 2, random (0, 360));				
+				A_SpawnProjectile ("SmokeSpawner2", 0, 0, random (0, 360), 2, random (0, 360));	
+				A_SpawnProjectile ("Carl_Rocket_Trail3", 0, 0, random (0, 360), 2, random (0, 360));				
+				A_SpawnProjectile ("SmokeSpawner2", 0, 0, random (0, 360), 2, random (0, 360));	
+				A_SpawnProjectile ("Carl_Rocket_Trail2", 0, 0, random (0, 360), 2, random (0, 360));					
+				A_SpawnProjectile ("SmokeSpawner2", 0, 0, random (0, 360), 2, random (0, 360));					
+				}	
+			}			
+	EXPS B 2 BRIGHT Radius_Quake(100,8,0,15,0);
+	EXPS C 2 BRIGHT Radius_Quake(100,8,0,15,0);
+	EXPS D 2 BRIGHT Radius_Quake(100,8,0,15,0);
+	EXPS E 2 BRIGHT Radius_Quake(100,8,0,15,0);
+	EXPS F 2 BRIGHT Radius_Quake(100,8,0,15,0);
+	EXPS G 2 BRIGHT Radius_Quake(100,8,0,15,0);
+	EXPS H 2 BRIGHT Radius_Quake(100,8,0,15,0);
+	EXPS I 2 BRIGHT Radius_Quake(100,8,0,15,0);
+	EXPS J 2 BRIGHT Radius_Quake(100,8,0,15,0);
+	EXPS K 2 BRIGHT Radius_Quake(100,8,0,15,0);
+	EXPS L 2 BRIGHT Radius_Quake(100,8,0,15,0);
+	EXPS M 1 BRIGHT Radius_Quake(100,8,0,15,0);
+	TNT1 A 4 BRIGHT Radius_Quake(100,8,0,15,0);
+    Stop;
+  }
+}	
+	
+	

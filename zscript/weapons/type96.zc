@@ -1,0 +1,166 @@
+/*
+	{			Nambu Type-99 Light Machine-Gun			}
+
+	バンザイ!
+		
+	A Japanese Copy of the formidable Bren LMG, The Nambu Type-99 LMG is a large,
+	somewhat unweildly weapon. Slow to fire, with heavy recoil, the Type-99 LMG punches 
+	hard and takes no prisoners. 7.7x58mm served in full-auto fire is nothing to snuff at,
+	especially at around 550 RPM. It's too large to allow use with a melee weapon, so 
+    it's best to be careful when enemies are upclose. 
+		
+		
+*/
+
+class Type96 : NAKUWEAPON
+{
+	Default
+	{
+		Weapon.AmmoType "Ammo77";
+		Weapon.AmmoType2 "NambuMagazine";		
+		Weapon.Kickback 50;
+		Weapon.AmmoUse 0;
+		Weapon.AmmoGive 120;		
+		Inventory.PickupMessage "[6]Nambu Type 99 LMG - 7.7x58mm";
+		Weapon.Slotnumber 6;	
+		Tag "Nambu.";
+		attacksound "";
+		+WEAPON.NOAUTOAIM;		
+		+WEAPON.NOALERT;
+		+WEAPON.NOAUTOFIRE;
+		Scale 0.9;
+		}
+		
+	action void A_Type96Recoil() {
+	if (GetCvar("recoil_toggle") == 1)
+	{
+		A_SetPitch(pitch - random(1, 2));
+		A_SetAngle(angle + random(-1, 1));		
+	    A_Recoil(0.3);	
+		}		
+	}
+
+	action void A_NambuCasing() {
+	
+	if (GetCvar("casing_toggle") == 1)
+	{
+	
+			A_FireProjectile("AltARCaseSpawn",0,0,8,-16);			
+			
+		}
+	}
+		States
+		{
+		
+			deselect:
+			TNT1 A 0 A_Lower;
+			loop;		
+ Spawn:
+    T96S A -1;
+    stop;
+		
+	READY:
+		TY9S ABCDECBA 4 A_Weaponready(WRF_ALLOWRELOAD);
+		Loop;
+
+	NoAmmo:
+		TY9S A 4 a_stopsound(1);
+		goto ready;
+
+	fire:
+		TNT1 A 0 A_JumpIfInventory("NambuMagazine",1,1);				
+		Goto NoAmmo;
+		TNT1 A 0 {
+			A_AlertMonsters();	
+			A_PlaySound("type96/LOOP",1,1,1);	
+			A_Firebullets(4,4,1,16,"Bulletpuff");	
+			A_Gunflash();
+			A_TakeInventory("NambuMagazine",1);
+			A_SingleSmoke();
+			A_Type96Recoil();
+			}
+		 
+		TPPF A 1 BRIGHT A_NambuCasing();
+		TPPF BC 1;
+		TNT1 A 0 {
+		A_Refire();
+		}		
+		TNT1 A 0 {
+		A_Stopsound(1);
+		A_Playsound("type96/end",1);
+		}
+		TPPF DEF 1;
+		goto ready;
+	hold:
+		TNT1 A 0 A_JumpIfInventory("NambuMagazine",1,1);				
+		Goto NoAmmo;
+		TNT1 A 0 {
+			A_AlertMonsters();	
+			A_PlaySound("type96/LOOP",1,1,1);	
+			A_Firebullets(4,4,1,16,"Bulletpuff");	
+			A_Gunflash();
+			A_TakeInventory("NambuMagazine",1);	
+			A_SingleSmoke();
+			A_Type96Recoil();
+			
+			}
+		 
+		TPFF A 1 BRIGHT {
+		A_NambuCasing();
+		let psp = player.FindPSprite(PSP_Weapon); 
+			if (psp) 
+			psp.frame = random(0,3); 
+		//Thanks Jekyll!
+		}
+		TPPF BC 1; 	
+		TNT1 A 0 A_Refire;
+		TNT1 A 0 A_Stopsound(1);
+		TNT1 A 0 A_Playsound("type96/end",1);		
+		TPPF DEF 1;	
+		goto ready;
+	reload:
+		TNT1 A 0 A_JumpIfInventory("NambuMagazine",55,"Ready");
+		T9PR ABCDEFGH 1;
+		T9PR I 1 A_Playsound("type96/magout");
+		T9PR JKL 1;
+		T9PR MNO 2;
+		T9PR PQRSTUV 1;
+		T9PR W 1 A_Playsound("type96/magins");
+		T9PR X 1;
+		T9PR YZ 2;
+		T9RR A 2;
+		T9RR BC 1;
+		T9RR D 1 A_Playsound("type96/boltback");
+		T9RR EF 2;
+		T9RR G 1;
+		T9RR H 1 A_Playsound("type96/boltrel");
+		T9RR IJKLMNOPQ 1;
+		ReloadRepeat:
+			TNT1 A 0 A_JumpIfInventory("NambuMagazine", 55, "ReloadFinish");
+			TNT1 A 0 A_JumpIfInventory("ammo77", 1, 1);
+			Goto ReloadFinish;
+			TNT1 A 0 A_GiveInventory("NambuMagazine", 1);
+			TNT1 A 0 A_Takeinventory("ammo77",1);
+			Goto ReloadRepeat;
+		ReloadFinish:
+			TNT1 A 0 Offset(1,30);
+			Goto Ready;
+	select:
+		TNT1 A 0 Setplayerproperty(0,1,2);
+		TNT1 A 4;
+		SELT ABCDEFGHI 1;
+		goto ready;
+		
+		}
+}
+
+Class NambuMagazine : Ammo
+{
+	Default
+	{
+	Inventory.Amount 55;
+	Inventory.MaxAmount 55;
+	Ammo.BackpackAmount 0;
+	Ammo.BackpackMaxAmount 55;
+}
+}

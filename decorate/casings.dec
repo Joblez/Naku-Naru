@@ -1,0 +1,762 @@
+//||||||||||||||||||||||||||||||||||||||||
+//||									||
+//||		Joblez's Casings 			||
+//||			& Effects				||
+//||	(Modded Willuker's Casings)		||
+//||									||
+//||||||||||||||||||||||||||||||||||||||||
+
+ACTOR SMGCaseSpawn
+{
+   Speed 20
+   PROJECTILE
+   
+   +NOCLIP
+   +dontsplash
+   +notimefreeze
+   -ACTIVATEIMPACT
+   
+   States
+   {
+   Spawn:
+      TNT1 A 1
+      TNT1 A 1 A_CustomMissile("SMGCasing",10,4,random(-85,-95),2,random(30,60))
+      Stop
+   }
+}
+
+ACTOR SMGCasing
+{
+   Height 8
+   Radius 6
+   Speed 6
+   Scale 0.15
+   BounceFactor 0.7
+   Mass 1
+   ReactionTime 60
+   SeeSound "weapons/shell4"   
+   PROJECTILE
+   Bouncetype "Grenade"
+   +DOOMBOUNCE
+   - NOGRAVITY 
+   - NOBLOCKMAP
+   +notimefreeze
+  +FORCEXYBILLBOARD
+  +BOUNCEONFLOORS
+  +BOUNCEONCEILINGS   
+	+ACTIVATEIMPACT
+   
+   States
+   {
+   Spawn:
+      CAS3 A 2
+	  CAS3 B 2
+	  CAS3 C 2
+ 	  CAS3 D 2
+	  CAS3 E 2
+	  CAS3 F 2
+	  CAS3 G 2
+	  CAS3 H 2
+	  CAS3 I 2
+	  /*CAS3 B 2 A_ChangeFlag("NOTIMEFREEZE",FALSE)
+	  
+      CAS3 D 2 A_Countdown
+	  CAS3 F 2
+
+	  CAS3 H 2
+	  CAS3 I 2
+	  */
+      Goto Spawn+1
+   Death:
+	  CAS3 A 0// A_SpawnItemEX("DeadSMGCase",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,128) 
+      CAS3 A 350
+      CAS3 A 3  A_SetTranslucent(0.8, 0)
+      CAS3 A 3  A_SetTranslucent(0.6, 0)
+      CAS3 A 3  A_SetTranslucent(0.4, 0)
+      CAS3 A 3  A_SetTranslucent(0.2, 0)
+      Stop
+	  /*
+      CAS3 B 350
+      CAS3 B 3  A_SetTranslucent(0.8, 0)
+      CAS3 B 3  A_SetTranslucent(0.6, 0)
+      CAS3 B 3  A_SetTranslucent(0.4, 0)
+      CAS3 B 3  A_SetTranslucent(0.2, 0)
+	  CAS3 A 0 A_SpawnItemEX("DeadSMGCase",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,128)
+      Stop
+      CAS3 C 350
+      CAS3 C 3  A_SetTranslucent(0.8, 0)
+      CAS3 C 3  A_SetTranslucent(0.6, 0)
+      CAS3 C 3  A_SetTranslucent(0.4, 0)
+      CAS3 C 3  A_SetTranslucent(0.2, 0)
+	  CAS3 A 0 A_SpawnItemEX("DeadSMGCase",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,128)
+      Stop
+      CAS3 D 350
+      CAS3 D 3  A_SetTranslucent(0.8, 0)
+      CAS3 D 3  A_SetTranslucent(0.6, 0)
+      CAS3 D 3  A_SetTranslucent(0.4, 0)
+      CAS3 D 3  A_SetTranslucent(0.2, 0)
+	  CAS3 A 0 A_SpawnItemEX("DeadSMGCase",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,128)
+      Stop
+	  */
+   }
+} 
+
+
+ACTOR 357CaseSpawn
+{
+   Speed 20
+   PROJECTILE  
+   +NOCLIP
+   +dontsplash
+   +notimefreeze
+   -ACTIVATEIMPACT
+   
+   States
+   {
+   Spawn:
+      TNT1 A 1
+      TNT1 A 1 A_CustomMissile("RevoCasing",2,4,random(85,95),0,random(20,40))
+      Stop
+   }
+}
+
+ACTOR Alt357CaseSpawn
+{
+   Speed 20
+   PROJECTILE  
+   +NOCLIP
+   +dontsplash
+   +notimefreeze
+   -ACTIVATEIMPACT
+   
+   States
+   {
+   Spawn:
+      TNT1 A 1
+      TNT1 A 1 A_CustomMissile("RevoCasing",-2,-4,random(-15,-35),0,random(20,40))
+      Stop
+   }
+}
+
+Actor DeadRevoCase 
+{
+ SeeSound "weapons/shell4"
+ Height 8
+ Radius 6
+ Speed 6
+ Scale 0.15
+	States
+	{
+	Spawn: 
+	CAS5 E 250 
+	TNT1 A -1
+		stop
+	}
+}
+
+
+ACTOR RevoCasing
+{
+   Height 8
+   Radius 6
+   Speed 6
+   Scale 0.15
+   BounceFactor 0.6
+   SEESound "weapons/shell4" 
+   Bouncetype "Grenade"   
+   Mass 1
+   ReactionTime 60
+   PROJECTILE
+  +DOOMBOUNCE
+   - NOGRAVITY 
+   - NOBLOCKMAP
+	-dontsplash   
+   +notimefreeze
+  +FORCEXYBILLBOARD
+  +BOUNCEONFLOORS
+  +BOUNCEONCEILINGS   
+	+ACTIVATEIMPACT  
+   States
+   {
+   Spawn:
+      CAS5 A 2
+	  CAS5 B 2
+	  CAS5 C 2 //A_SpawnItemEX("MuzzleSmoke",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,128)	  
+	  CAS5 D 2	
+	  CAS5 E 2
+	  CAS5 F 2
+	  CAS5 G 2
+	  CAS5 H 2
+	  CAS5 I 2
+	  /*CAS3 B 2 A_ChangeFlag("NOTIMEFREEZE",FALSE)
+	  
+      CAS3 D 2 A_Countdown
+	  CAS3 F 2
+
+	  CAS3 H 2
+	  CAS3 I 2
+	  */
+      Goto Spawn+1
+   Death:
+	  CAS5 A 0 
+      CAS5 A 350 A_PLAYSOUND("C45D")
+      CAS5 A 3  A_SetTranslucent(0.8, 0)
+      CAS5 A 3  A_SetTranslucent(0.6, 0)
+      CAS5 A 3  A_SetTranslucent(0.4, 0)
+      CAS5 A 3  A_SetTranslucent(0.2, 0)
+      Stop
+	  /*
+      CAS3 B 350
+      CAS3 B 3  A_SetTranslucent(0.8, 0)
+      CAS3 B 3  A_SetTranslucent(0.6, 0)
+      CAS3 B 3  A_SetTranslucent(0.4, 0)
+      CAS3 B 3  A_SetTranslucent(0.2, 0)
+	  CAS3 A 0 A_SpawnItemEX("DeadSMGCase",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,128)
+      Stop
+      CAS3 C 350
+      CAS3 C 3  A_SetTranslucent(0.8, 0)
+      CAS3 C 3  A_SetTranslucent(0.6, 0)
+      CAS3 C 3  A_SetTranslucent(0.4, 0)
+      CAS3 C 3  A_SetTranslucent(0.2, 0)
+	  CAS3 A 0 A_SpawnItemEX("DeadSMGCase",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,128)
+      Stop
+      CAS3 D 350
+      CAS3 D 3  A_SetTranslucent(0.8, 0)
+      CAS3 D 3  A_SetTranslucent(0.6, 0)
+      CAS3 D 3  A_SetTranslucent(0.4, 0)
+      CAS3 D 3  A_SetTranslucent(0.2, 0)
+	  CAS3 A 0 A_SpawnItemEX("DeadSMGCase",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,128)
+      Stop
+	  */
+   }
+} 
+ 
+
+ACTOR 40MMCasingSpawn
+{
+   Speed 20
+   PROJECTILE
+   SeeSound "weapons/shell3"
+   +NOCLIP
+   +dontsplash
+   +notimefreeze
+   -ACTIVATEIMPACT
+   
+   States
+   {
+   Spawn:
+      TNT1 A 1
+      TNT1 A 1 A_CustomMissile("40MMCasing",8,4,random(-85,-95),2,random(10,20))
+      Stop
+   }
+}
+
+ACTOR 40MMCasing
+{
+   Height 8
+   Radius 6
+   Speed 6
+   Scale 0.15   
+   BounceFactor 0.7
+   Mass 1
+   ReactionTime 60
+   Bouncetype "Grenade"   
+   PROJECTILE
+   +DOOMBOUNCE
+   - NOGRAVITY 
+   - NOBLOCKMAP
+   +notimefreeze
+	-dontsplash   
+	+ACTIVATEIMPACT
+  +FORCEXYBILLBOARD
+  +BOUNCEONFLOORS
+  +BOUNCEONCEILINGS     
+   States
+   {
+   Spawn:
+      CAS6 A 2
+	  CAS6 B 2 A_ChangeFlag("NOTIMEFREEZE",FALSE)
+	  CAS6 C 2 //A_SpawnItemEX("MuzzleSmoke",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,128)
+      CAS6 D 2 
+	  CAS6 E 2
+	  CAS6 F 2
+	  CAS6 G 2
+	  CAS6 H 2 A_Countdown
+      Goto Spawn+1
+   Death:
+      CAS6 A 350
+      CAS6 A 3  A_SetTranslucent(0.8, 0)
+      CAS6 A 3  A_SetTranslucent(0.6, 0)
+      CAS6 A 3  A_SetTranslucent(0.4, 0)
+      CAS6 A 3  A_SetTranslucent(0.2, 0)
+	  CAS6 A 0 
+      Stop
+	  /*
+      CAS6 B 350
+      CAS6 B 3  A_SetTranslucent(0.8, 0)
+      CAS6 B 3  A_SetTranslucent(0.6, 0)
+      CAS6 B 3  A_SetTranslucent(0.4, 0)
+      CAS6 B 3  A_SetTranslucent(0.2, 0)
+	  CAS6 B 0 A_SpawnItemEX("Dead40mmCase",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,128)
+      Stop
+      CAS6 C 350
+      CAS6 C 3  A_SetTranslucent(0.8, 0)
+      CAS6 C 3  A_SetTranslucent(0.6, 0)
+      CAS6 C 3  A_SetTranslucent(0.4, 0)
+      CAS6 C 3  A_SetTranslucent(0.2, 0)
+	  CAS6 C 0 A_SpawnItemEX("Dead40mmCase",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,128)
+      Stop
+      CAS6 D 350
+      CAS6 D 3  A_SetTranslucent(0.8, 0)
+      CAS6 D 3  A_SetTranslucent(0.6, 0)
+      CAS6 D 3  A_SetTranslucent(0.4, 0)
+      CAS6 D 3  A_SetTranslucent(0.2, 0)
+	  CAS6 D 0 A_SpawnItemEX("Dead40mmCase",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,128)
+      Stop
+	  */
+   }
+}
+  
+ 
+
+
+ACTOR ShellCaseSpawn
+{
+   Speed 20
+   PROJECTILE
+   +NOCLIP
+   +dontsplash
+   -ACTIVATEIMPACT
+   +notimefreeze
+   
+   States
+   {
+   Spawn:
+      TNT1 A 1
+      TNT1 A 1 A_CustomMissile("ShellCasing",2,4,random(85,95),0,random(20,40))
+      Stop
+   }
+}
+
+ACTOR AltShellCaseSpawn
+{
+   Speed 20
+   PROJECTILE
+   +NOCLIP
+   +dontsplash
+   -ACTIVATEIMPACT
+   +notimefreeze
+   
+   States
+   {
+   Spawn:
+      TNT1 A 1
+      TNT1 A 1 A_CustomMissile("ShellCasing",-2,-4,random(-15,-35),0,random(20,40))
+      Stop
+   }
+}
+
+ACTOR ShellCasing
+{
+   Height 8
+   Radius 6
+   Speed 6
+   Scale 0.25  
+   BounceFactor 0.7
+   Mass 1
+   ReactionTime 60
+   PROJECTILE
+   SeeSound "weapons/shell3"
+   Bouncetype "Grenade"   
+	+DOOMBOUNCE
+   -NOGRAVITY   
+	-dontsplash   
+  +ACTIVATEIMPACT   
+  +FORCEXYBILLBOARD
+  +BOUNCEONFLOORS
+  +BOUNCEONCEILINGS     
+   States
+   {
+   Spawn:
+      CAS2 A 2
+	  CAS2 B 2
+	  CAS2 C 2 
+	  CAS2 D 2
+	  CAS2 E 2
+	  CAS2 F 2
+	  CAS2 G 2
+	  CAS2 H 2 A_Countdown
+      Goto Spawn+1
+   Death:
+      CAS2 A 350 
+      CAS2 A 3  A_SetTranslucent(0.8, 0)
+      CAS2 A 3  A_SetTranslucent(0.6, 0)
+      CAS2 A 3  A_SetTranslucent(0.4, 0)
+      CAS2 A 3  A_SetTranslucent(0.2, 0)
+	  CAS2 A 3	A_SetTranslucent(0.0, 0)
+      Stop
+	  /*
+      CAS2 B 350
+      CAS2 B 3  
+      CAS2 B 3  
+      CAS2 B 3  
+      CAS2 B 3
+      CAS2 A 0 A_SpawnItemEX("DeadShellCase",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,128)
+      Stop
+      CAS2 C 350 
+      CAS2 C 3 
+      CAS2 C 3  
+      CAS2 C 3 
+      CAS2 C 3
+	  CAS2 A 0 A_SpawnItemEX("DeadShellCase",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,128)
+      Stop
+      CAS2 D 350 
+      CAS2 D 3  
+      CAS2 D 3  
+      CAS2 D 3  
+      CAS2 D 3
+      CAS2 A 0 A_SpawnItemEX("DeadShellCase",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,128)
+      Stop
+	  */
+   }
+}
+
+ACTOR AltARCaseSpawn
+{
+   Speed 20
+   PROJECTILE
+   +NOCLIP
+   +dontsplash
+   +notimefreeze
+   -ACTIVATEIMPACT
+   
+   States
+   {
+   Spawn:
+      TNT1 A 1
+      TNT1 A 1 A_CustomMissile("ARCasing",random(-16,-8),4,random(-175,-195),2,random(30,55))
+      Stop
+   }
+}
+
+ACTOR ARCaseSpawn
+{
+   Speed 20
+   PROJECTILE
+   +NOCLIP
+   +dontsplash
+   +notimefreeze
+   -ACTIVATEIMPACT
+   
+   States
+   {
+   Spawn:
+      TNT1 A 1
+      TNT1 A 1 A_CustomMissile("ARCasing",8,4,random(-75,-95),2,random(30,55))
+      Stop
+   }
+}
+
+ACTOR ARCasing
+{
+   Height 8
+   Radius 6
+   Speed 6
+   Scale 0.2 
+   BounceFactor 0.6
+   Mass 1
+   ReactionTime 60
+   SeeSound "weapons/shell2"
+   Bouncetype "Grenade"   
+   PROJECTILE
+   +DOOMBOUNCE
+   - NOGRAVITY 
+   - NOBLOCKMAP
+	-dontsplash
+   +notimefreeze
+   +ACTIVATEIMPACT
+  +FORCEXYBILLBOARD
+  +BOUNCEONFLOORS
+  +BOUNCEONCEILINGS     
+   
+   States
+   {
+   Spawn:
+      CAS4 A 2
+	  CAS4 B 2
+	  CAS4 C 2 
+	  CAS4 D 2
+	  CAS4 E 2
+	  CAS4 F 2
+	  CAS4 G 2
+	  CAS4 H 2 A_Countdown
+		//A_SpawnItemEX("MuzzleSmoke",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,128);
+      Goto Spawn+1
+   Death:	   
+      CAS4 A 350
+      CAS4 A 3  A_SetTranslucent(0.8, 0)
+      CAS4 A 3  A_SetTranslucent(0.6, 0)
+      CAS4 A 3  A_SetTranslucent(0.4, 0)
+      CAS4 A 3  A_SetTranslucent(0.2, 0)
+	  CAS4 A 3 A_SetTranslucent(0.0, 0)
+	  CAS4 A 0
+	  stop
+   }
+}
+
+ACTOR WallSparks
+  {
+  +RANDOMIZE
+  +FORCEXYBILLBOARD
+  +BOUNCEONFLOORS
+  +BOUNCEONCEILINGS
+  -NOGRAVITY
+  Damage 0
+  BounceType Grenade
+  bouncefactor 0.1
+  wallbouncefactor 0.1
+  speed 75
+  alpha 0.4
+  scale 0.1
+  
+  States
+  {
+  Spawn:
+	PRBM A 12 BRIGHT 
+	Goto Death
+  Death:
+	TNT1 A 0
+	Stop
+  XDeath:
+	TNT1 A 0
+	Stop
+  }
+}
+
+
+
+Actor Muzzlesmoke
+{
+	+NOGRAVITY
+	+NOBLOCKMAP
+	+FLOORCLIP
+	+FORCEXYBILLBOARD
+	+NOINTERACTION
+	+DONTSPLASH
+	Speed 1
+	RenderStyle Add
+	Alpha		0.5
+	+CLIENTSIDEONLY
+	Radius		0
+	Height		0
+	Scale		0.4
+	
+	States
+	{
+	Spawn:
+    NULL A 1 A_SetTranslucent(0.25)	
+	SMOK ABCDEFGHIJKLMNOPQ 2 A_FadeOut(0.005)
+	goto death
+	Death:
+	TNT1 A 0
+	stop
+}	
+}
+
+
+
+Actor Muzzlesmoke2 : Muzzlesmoke
+{
+	+NOGRAVITY
+	+NOBLOCKMAP
+	+FLOORCLIP
+	+FORCEXYBILLBOARD
+	+NOINTERACTION
+	+DONTSPLASH
+	Speed 1
+	RenderStyle Add
+	Alpha		0.5
+	+CLIENTSIDEONLY
+	Radius		0
+	Height		0
+	Scale		0.8
+		
+}
+
+actor Smokespawner2 
+{
+	Speed 20
+	+NOCLIP
+	states
+	{
+	spawn:
+	TNT1 A 1	
+	TNT1 A 0 A_CustomMissile("Muzzlesmoke2", 0, 0, random (0, 360), 2, random (0, 180)) 
+	stop
+	}
+}
+
+
+actor Smokespawner 
+{
+	Speed 20
+	+NOCLIP
+	states
+	{
+	spawn:
+	TNT1 A 1	
+	TNT1 A 0 A_CustomMissile("Muzzlesmoke", 0, 0, random (0, 360), 2, random (0, 180)) 
+	stop
+	}
+}
+
+
+ACTOR ShotSparks
+  {
+  Projectile
+  +RANDOMIZE
+  +FORCEXYBILLBOARD
+  +BOUNCEONFLOORS
+  +BOUNCEONCEILINGS
+  -NOGRAVITY
+  Damage 0
+  BounceType Grenade
+  bouncefactor 0.2
+  wallbouncefactor 0.2
+  speed 35
+  alpha 1
+  scale 0.2
+  
+  States
+  {
+  Spawn:
+	PRBM A 16 BRIGHT 
+	Goto Death
+  Death:
+	TNT1 A 0
+	Stop
+  XDeath:
+	TNT1 A 0
+	Stop
+  }
+}
+
+ACTOR Bullet_Puff replaces BulletPuff
+{
+	+NOBLOCKMAP
+	+NOGRAVITY
+	+RANDOMIZE
+	+FLOORCLIP
+	+NOEXTREMEDEATH
+	RenderStyle Add
+	Decal BulletChip
+	Alpha 1.5
+	Radius 1
+	Height 1
+	Scale 2
+	Alpha 0.5	
+	Speed 0
+	States
+	{
+  Spawn:
+    FX57 A 0 BRIGHT 
+    Stop
+  Spray:
+    SPRY ABCDEF 3
+    SPRY G 2
+    Stop
+	Crash:
+		TNT1 A 0 A_SetScale(0.5)
+		TNT1 A 0 A_SpawnItem("Smokespawner")
+		TNT1 A 0 A_SpawnItem("Smokespawner")		
+		TNT1 A 0 A_PlaySound("weapons/ricochet")
+		FX57 A 1 BRIGHT
+		FX57 BC 1  BRIGHT A_SetTranslucent(.8,1)
+		FX57 DE 1  BRIGHT A_SetTranslucent(.6,1)
+		FX57 FG 1  BRIGHT A_SetTranslucent(.4,1)
+		FX57 HIJ 1 BRIGHT A_SetTranslucent(.2,1) 
+		Stop
+	}
+}
+
+ACTOR Knife_Puff: bullet_puff
+{
+  +NOBLOCKMAP
+  +ALLOWPARTICLES
+  +RANDOMIZE
+  //-NOEXTREMEDEATH
+  +NOGRAVITY
+  decal KnifeMark
+  RenderStyle Translucent
+  Alpha 0.5
+  scale 0.6
+  Mass 100
+  seeSound "staff/hitenemy"         
+  attacksound "staff/hitworld" 
+
+  States
+  {
+  Spawn:
+    FX57 A 0 BRIGHT A_playsound("staff/hitenemy")
+    Stop
+  Spray:
+    SPRY ABCDEF 3
+    SPRY G 2
+    Stop	
+	Crash:
+		TNT1 A 0 A_SetScale(0.5)
+		TNT1 A 0 A_SpawnItem("Smokespawner")
+		TNT1 A 0 A_SpawnItem("Smokespawner")
+		FX57 A 1 BRIGHT
+		FX57 BC 1  BRIGHT A_SetTranslucent(.8,1)
+		FX57 DE 1  BRIGHT A_SetTranslucent(.6,1)
+		FX57 FG 1  BRIGHT A_SetTranslucent(.4,1)
+		FX57 HIJ 1 BRIGHT A_SetTranslucent(.2,1) 
+		Stop
+	Melee:	
+    FX57 A 0 BRIGHT A_playsound("staff/hitenemy")	
+		TNT1 A 0 A_SetScale(0.5)
+		Stop	
+  }
+}
+
+ACTOR End_Puff: bullet_puff
+{
+  +NOBLOCKMAP
+  +ALLOWPARTICLES
+  +RANDOMIZE
+  +NOEXTREMEDEATH
+  +NOGRAVITY
+  RenderStyle Translucent
+  Alpha 0.5
+  scale 0.6
+  Mass 100
+  seeSound "staff/butthit"         
+  attacksound "staff/butthit" 
+
+  States
+  {
+  Spawn:
+    FX57 A 0 BRIGHT A_playsound("staff/butthit")
+	stop
+  Spray:
+    SPRY ABCDEF 3
+    SPRY G 2
+    Stop	
+	Crash:
+		TNT1 A 0 A_SetScale(0.5)
+		TNT1 A 0 A_SpawnItem("Smokespawner")
+		TNT1 A 0 A_SpawnItem("Smokespawner")
+		FX57 A 1 BRIGHT
+		FX57 BC 1  BRIGHT A_SetTranslucent(.8,1)
+		FX57 DE 1  BRIGHT A_SetTranslucent(.6,1)
+		FX57 FG 1  BRIGHT A_SetTranslucent(.4,1)
+		FX57 HIJ 1 BRIGHT A_SetTranslucent(.2,1) 
+		Stop
+	Melee:	
+	    FX57 A 0 BRIGHT A_playsound("staff/butthit")
+		TNT1 A 0 A_SetScale(0.5)
+		Stop	
+		
+  }
+}

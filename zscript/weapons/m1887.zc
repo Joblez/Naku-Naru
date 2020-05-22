@@ -1,0 +1,187 @@
+/*
+	{			Chiappa Model 1887 Shotgun			}
+
+	Come with me, if you want to live.
+	
+	6 rounds, 6 chances to hit something. The Model 1887 is legendary for it's
+	size and power, and makes a great onscreen profile. Incredibly powerful upclose,
+	but innefective at larger ranges, this powerhouse will generally make quick work
+	of most enemies you come across. Unfortunately not magazine fed, it requires
+	that you reload each round individually.  
+*/
+
+class Model1887 : NAKUWEAPON replaces shotgun
+{
+	Default
+	{
+		Weapon.AmmoType "shells12gauge";
+		Weapon.AmmoType2 "M1887Tube";		
+		Weapon.Kickback 100;
+		Weapon.AmmoUse 0;
+		Weapon.AmmoGive 8;		
+		Inventory.PickupMessage "[3]Model 1887 Shotgun - 12 gauge";
+		Weapon.Slotnumber 3;
+		Tag "Model 1887.";
+		+WEAPON.NOAUTOAIM;	
+		+WEAPON.NOAUTOFIRE;
+		+WEAPON.NOALERT;
+		}
+		States
+		{
+		
+				deselect:
+			TNT1 A 0 A_Lower;
+			loop;
+
+  Spawn:
+    MSSI A -1;
+    Stop;
+
+	NoAmmo:
+		M18S A 2 Offset(1,32) A_PlaySound("weapons/empty");
+		M18S A 2 Offset(3,35);
+ 		TNT1 A 0 Offset(1,30);	
+		Goto ready;
+
+	ALTFIRE:
+		M8AL E 1 A_PlaySound("staff/swing", CHAN_AUTO);
+		M8AL F 1 ;
+		M8AL G 1 ;
+		M8AL H 1 A_CustomPunch(15, FALSE, 0,"End_Puff"); 
+		TNT1 A 0 A_Quake(2,2,0,20);
+		M8AL I 2 ;
+		M8AL J 1 ;
+		M8AL K 1 A_Weaponready(WRF_ALLOWRELOAD);
+		M8AL L 1 A_Weaponready(WRF_ALLOWRELOAD);
+		M8AL M 1 A_Weaponready(WRF_ALLOWRELOAD);
+		M8AL N 1 A_Weaponready(WRF_ALLOWRELOAD);
+		M8AL O 1 A_Weaponready(WRF_ALLOWRELOAD);
+		M8AL P 1 A_Weaponready(WRF_ALLOWRELOAD);
+		M8AL Q 1 A_Weaponready(WRF_ALLOWRELOAD);
+		GOTO READY;	
+	
+	fire:
+		TNT1 A 0 A_JumpIfInventory("M1887Tube",1,1);
+		goto noammo;
+		M8AF A 1 BRIGHT {
+		A_ZoomFactor(0.975);
+		A_FireBullets (4, 5, 10, 6, "Bullet_Puff");			
+		A_TakeInventory("M1887Tube",1);		
+		A_Quake(10,6,0,150);
+		A_ShotgunRecoil();
+		A_Playsound("1887/fire",1);
+		A_ShotgunSmoke();
+		A_AlertMonsters();	
+		}		
+		M8AF B 1; 
+		TNT1 A 0 A_ZoomFactor(1.000);
+		M8AF C 2;
+		M8AF EF 1;
+		M8AF G 2;
+	
+	Pump:
+		TNT1 A 0 A_Jump(96,"Pump2");
+		M2P8 A 1;
+		M2P8 E 1 A_PlaySound("1887/pumpback", CHAN_AUTO);
+		M2P8 F 1;
+		TNT1 A 0 A_CasingShotgun();	
+		M2P8 G 1;	
+		M2P8 HI 2;		
+		M2P8 JKL 1;
+		M2P8 M 2 A_PlaySound("1887/pumpfor", CHAN_AUTO);
+		M2P8 NOPQR 1 A_Weaponready(WRF_ALLOWRELOAD);
+		goto ready;
+	
+	Pump2:
+		M1P8 AD 1;
+		M1P8 E 1 A_PlaySound("1887/pumpback", CHAN_AUTO);
+		M1P8 F 1 A_CasingShotgun();		
+		M1P8 G 2;
+		M1P8 HIJKL 1;
+		M1P8 M 1 A_PlaySound("1887/pumpfor", CHAN_AUTO);
+		M1P8 NOP 1;
+		M1P8 QRSTUV 1 A_Weaponready(WRF_ALLOWRELOAD);
+		Goto ready;
+	
+	ready:
+		M18S ABCDEEDCBA  4 A_Weaponready(WRF_ALLOWRELOAD);
+		Loop;
+
+	reload:
+		TNT1 A 0 A_JumpIfInventory("shells12gauge",1,1);
+		Goto Ready;
+		TNT1 A 0 A_JumpIfInventory("M1887Tube",6,"Ready");
+		ML18 A 1 A_PlaySound("1887/pumpback", CHAN_AUTO);
+		ML18 B 1;
+		ML18 C 1;
+		ML18 D 1;
+		ML18 E 1;
+		ML18 F 1;
+		ML18 G 1;
+		ML18 H 1;
+		ML18 I 1;
+		ML18 J 1;
+		ML18 K 1;
+		ML18 L 2;
+ 
+	
+	ReloadRepeat:
+		TNT1 A 0 A_JumpIfInventory("M1887Tube", 6, "ReloadFinish");
+		TNT1 A 0 A_JumpIfInventory("shells12gauge", 1, "ProperReload");
+		Goto ReloadFinish;
+		
+	ProperReload:			
+		ML12 A 1 A_WEAPONREADY(WRF_NOSWITCH);
+		ML12 B 1 A_WEAPONREADY(WRF_NOSWITCH);
+		ML12 C 1 A_playsound("shellINS");
+		ML12 D 2 A_WEAPONREADY(WRF_NOSWITCH);
+		ML12 E 2 A_WEAPONREADY(WRF_NOSWITCH);
+		ML12 F 1 A_WEAPONREADY(WRF_NOSWITCH);
+		ML12 G 2 A_WEAPONREADY(WRF_NOSWITCH);	
+ 		
+		TNT1 A 0 A_GiveInventory("M1887Tube", 1);
+		TNT1 A 0 A_Takeinventory("shells12gauge",1);		
+		
+		Goto ReloadRepeat;
+		
+		TNT1 A 0 A_JumpIfInventory("M1887Tube", 6, "ReloadFinish");		
+		
+		Goto ReloadFinish;
+			
+	ReloadFinish:
+		ML38 A 1;
+		ML38 B 1;
+		ML38 C 1;
+		ML38 D 1 A_PlaySound("1887/pumpfor", CHAN_AUTO);
+		ML38 E 1;
+		ML38 F 1;
+		ML38 G 1;
+		ML38 H 1;
+		ML38 I 1;
+		ML38 J 1;
+		ML38 K 1;
+		ML38 L 1;
+		goto pump;
+ 
+		Goto Ready;		
+	
+	select:
+		TNT1 A 0 Setplayerproperty(0,1,2);
+		TNT1 A 4;
+		SELM ABCEFGHI 1;
+		GOTO READY;
+		
+		
+		}
+}	
+
+Class M1887Tube : Ammo
+{
+	Default
+	{
+	Inventory.Amount 6;
+	Inventory.MaxAmount 6;
+	Ammo.BackpackAmount 0;
+	Ammo.BackpackMaxAmount 6;
+}
+}

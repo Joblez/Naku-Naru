@@ -1,0 +1,307 @@
+/*
+	{			Arisaka Type-99 Bolt-Action Rifle			}
+
+	バンザイ!
+		
+	Powerful, if a little slow to fire and load, the Type 99 is  
+	iconic for its use in the pacific theatre. As with most examples, this variant
+  	comes with a bayonet. Since it is so large, you can't really use your blade one-handed, 
+	so having its bayonet is incredibly helpful in regards to close enemies.
+	Banzai charging included!
+		
+		
+*/
+
+class Type99 : NAKUWEAPON replaces SuperShotgun
+{
+	Default
+	{
+		Weapon.AmmoType "Ammo77";
+		Weapon.AmmoType2 "ArisakaMagazine";		
+		Weapon.Kickback 50;
+		Weapon.AmmoUse 0;
+		Weapon.AmmoGive 10;		
+		Inventory.PickupMessage "[6]Arisaka Type 99 - 7.7x58mm";
+		Weapon.Slotnumber 6;	
+		Tag "Arisaka.";
+		attacksound "";
+		+WEAPON.NOAUTOAIM;		
+		+WEAPON.NOAUTOFIRE;
+		Scale 0.9;
+		}
+		
+	action void A_ArisakaRecoil() {
+		if (GetCvar("recoil_toggle") == 1) {	
+			A_OverlayOFFSET(1,random(-5,5),random(-1,1),WOF_ADD|WOF_KEEPY);			
+			A_Recoil(0.5);
+			A_SetPitch(pitch - random(1, 5));
+			A_SetAngle(angle + random(-4, 4));	
+			}
+		}			
+	States
+		 {
+		
+		deselect:
+			M144 X 0 A_Takeinventory("IronSights", 1);
+			M144 X 0 A_Zoomfactor(1.0);			
+			TNT1 A 0 A_Lower;
+			loop;		
+
+		Spawn:
+			TTYY A -1; 
+			stop;
+		
+		READY:
+			TYPS ABCDEFEDCBA 4 A_Weaponready(WRF_ALLOWRELOAD | WRF_ALLOWZOOM);
+			Loop;
+
+		ALTFIRE:
+			TNT1 A 0 A_PlaySound("staff/swing", 1);	
+			TALT A 1;
+			TALT B 1;
+			TALT C 1;
+			TALT D 1;
+			TNT1 A 0 A_Refire;	
+			TALT E 1;	
+			TALT F 1;
+			TNT1 A 0 A_CustomPunch(25, FALSE, 0,"Knife_Puff");	
+			TALT G 1;
+			TALT H 2;
+			TALT I 2;
+			TALT J 1;
+			TALT K 1;	
+	 	
+			goto ready;
+	
+		AltHold:	
+			NakuBanzai:
+			TNT1 A 0 A_Playsound("type99/charge",3);
+	
+		Actuallyholding:
+			TALT E 3 A_ZoomFactor(0.900);
+			TNT1 A 0 A_SetSpeed(1.5);
+			TALT D 3;
+			TNT1 A 0 A_Refire("ActuallyHolding");	
+		StoppedHolding:	
+			TNT1 A 0 A_PlaySound("staff/swing", 1);	
+			TNT1 A 0 A_SetSpeed(1.1);
+			TNT1 X 0 A_Zoomfactor(1.0);	
+			TALT E 1;	
+			TALT F 1;
+			TNT1 A 0 A_CustomPunch(25, FALSE, 0,"Knife_Puff");	
+			TALT G 2;
+			TALT H 2;
+			TALT I 2;
+			TALT J 1;
+			TALT K 1;	
+	 	
+			goto ready;
+		
+	
+		NoAmmo:
+			TNT1 A 0 A_Jumpifinventory("IronSights", 1,"NoSightAmmo" );	
+			TYPS A 4;
+			goto ready;
+	
+		fire:
+			TNT1 A 0 A_JumpIfInventory("ArisakaMagazine",1,1);
+			Goto NoAmmo;
+	
+			TNT1 A 0 A_Jumpifinventory("IronSights", 1, "Sightfire");	
+	
+			ASKF A 0 { 
+				A_FireBullets(4, 2, 1,100,"BulletPuff",FBF_NORANDOM);
+				A_SetPitch(pitch+0.2);
+				A_Quake(2,2,0,50);		
+				A_Gunflash();		
+				A_ShotgunSmoke();
+				A_ArisakaRecoil();	
+				A_AlertMonsters();	
+				A_TakeInventory("ArisakaMagazine",1,1);
+				A_Playsound("type99/fire",1);		
+			}		
+			TYPF ABCDEFGHI 1;	
+	
+		BOLT:
+			TYPB ABD 1;
+			TNT1 A 0 A_PlaySound("type99/boltback", CHAN_AUTO);	
+			TYPB E 1 A_CasingRifle();
+			TYPB FGHIJ 1;
+			TYPB KL 2;
+			TYPB M 1 A_PlaySound("type99/boltfor", CHAN_AUTO);
+			TYPB NO 2;
+			TYPB PQRSTUVW 1;
+			goto ready;
+
+		reload:
+			TNT1 A 0 A_JumpIfInventory("ArisakaMagazine",5,"Ready");
+			M144 X 0 A_Zoomfactor(1.0);
+			TYPB ABCD 1;
+			TNT1 A 0 A_PlaySound("type99/boltback", CHAN_AUTO);	
+			TYPB EF 1;
+			TYPB GH 2;
+			TYPB IJK 1;
+			TYPB L 2;
+			TNT1 A 0 A_JumpIfInventory("ArisakaMagazine", 5, "ReloadFinish");
+			TNT1 A 0 A_JumpIfInventory("Ammo77", 1, "ProperReload");
+			Goto ReloadFinish;
+		
+		ReloadRepeat:
+			TNT1 A 0 A_JumpIfInventory("ArisakaMagazine", 5, "ReloadFinish");
+			TNT1 A 0 A_JumpIfInventory("Ammo77", 1, "ProperReload");
+			Goto ReloadFinish;	
+		
+		ProperReload:		
+			TYRL A 2 A_WEAPONREADY(WRF_NOSWITCH);	
+			TYRL BCD 1 A_WEAPONREADY(WRF_NOSWITCH);			
+			TYRL E 1;
+			TYRL F 1 {
+				A_PlaySound("type99/rifleload", CHAN_AUTO);
+				A_WEAPONREADY(WRF_NOSWITCH);
+				A_GiveInventory("ArisakaMagazine", 1);
+				A_Takeinventory("Ammo77",1);
+			} 	
+			TYRL G 1 A_WEAPONREADY(WRF_NOSWITCH);		
+			TYRL H 2 A_WEAPONREADY(WRF_NOSWITCH);		
+	 		
+			Goto ReloadRepeat;
+		ReloadFinish:
+			TYPB L 2;		
+			TYPB M 1 A_PlaySound("type99/boltfor", CHAN_AUTO);
+			TYPB NO 2;
+			TYPB PQRSTUVW 1;
+			goto ready;
+		select:
+			TNT1 A 0 Setplayerproperty(0,1,2);
+			TNT1 A 4 A_PlaySound("type99/boltfor", CHAN_AUTO);
+			TYSS ABCDEF 1;
+			TYSS G 2;
+			TYSS HIJK 1;
+			goto ready;
+		
+		Zoom:
+			M144 X 0 A_Jumpifinventory("IronSights",1,"Zoomout");
+			M144 X 0 A_Giveinventory("IronSights", 1);
+			M144 V 0 A_Playsound("weapon/draw");
+			TYRA ABCDE 1;		
+			TYRA F 1 A_Zoomfactor (2.0);
+			TYRA GHI 1;	
+			goto ZoomReady;
+		
+		ZoomReady:	
+			TNT1 A 0 A_Jumpifinventory("ZoomOut", 1,"ScopedDeselect");
+			M144 A 0 A_Jumpifinventory("ScopedDeselect",1,"Sightfire");	
+			TYPP A 4 A_Weaponready(WRF_ALLOWZOOM | WRF_NOSECONDARY);
+			TYPP B 4 A_Weaponready(WRF_ALLOWZOOM | WRF_NOSECONDARY);	
+			TYPP C 4 A_Weaponready(WRF_ALLOWZOOM | WRF_NOSECONDARY);	
+			TYPP D 4 A_Weaponready(WRF_ALLOWZOOM | WRF_NOSECONDARY);	
+			TYPP E 4 A_Weaponready(WRF_ALLOWZOOM | WRF_NOSECONDARY);
+			TYPP F 4 A_Weaponready(WRF_ALLOWZOOM | WRF_NOSECONDARY);
+			TYPP E 4 A_Weaponready(WRF_ALLOWZOOM | WRF_NOSECONDARY);
+			TYPP D 4 A_Weaponready(WRF_ALLOWZOOM | WRF_NOSECONDARY);
+			TYPP C 4 A_Weaponready(WRF_ALLOWZOOM | WRF_NOSECONDARY);
+			TYPP B 4 A_Weaponready(WRF_ALLOWZOOM | WRF_NOSECONDARY);	
+			TYPP A 4 A_Weaponready(WRF_ALLOWZOOM | WRF_NOSECONDARY);	
+			Loop;
+		ScopedDeselect:
+			M144 X 0 A_Takeinventory("IronSights", 1);
+			M144 X 0 A_Zoomfactor(1.0);
+			TYRA I 1;		
+			TYRA H 1;
+			TYRA G 1;
+			TYRA F 1;
+			TYRA E 1;
+			TYRA D 1;
+			TYRA C 1;
+			TYRA B 1;
+			TYRA A 1;	
+			TNT1 A 0 A_Lower;
+			Goto ScopedDeselect+3;
+
+		NoSightAmmo:
+			TNT1 A 0 A_Jumpifinventory("IronSights", 1,"ZoomOut" );
+			TYPP B 4 A_PlaySound("weapons/empty");
+			TYPP C 4;
+			TYPP B 4;
+			Goto ZoomReady;
+
+		ZoomOut:
+			M144 X 0 A_Takeinventory("IronSights", 1);
+			M144 X 0 A_Zoomfactor(1.0);
+			TYRA I 1;		
+			TYRA H 1;
+			TYRA G 1;
+			TYRA F 1;
+			TYRA E 1;
+			TYRA D 1;
+			TYRA C 1;
+			TYRA B 1;
+			TYRA A 1;	
+			TNT1 A 0 A_Lower;
+			Goto ScopedDeselect+3;
+
+		Sightfire:
+			TNT1 A 0 A_AlertMonsters;
+			TNT1 A 0 A_JumpIfInventory("ArisakaMagazine",1,1);
+			Goto NoSightAmmo;		
+			ASKF A 0 { 
+				A_FireBullets(4, 2, 1,100,"BulletPuff",FBF_NORANDOM);
+				A_SetPitch(pitch+0.2);
+				A_Quake(2,2,0,50);		
+				A_Gunflash();		
+				A_ShotgunSmoke();
+				A_ArisakaRecoil();	
+				A_AlertMonsters();	
+				A_TakeInventory("ArisakaMagazine",1,1);
+				A_Playsound("type99/fire",1);		
+			}			
+			TYFF A 1;
+			TYFF BCDE 2;
+			TYFF FGHI 1;	
+			TYPB ABCD 1;
+			TNT1 A 0 A_PlaySound("type99/boltback", CHAN_AUTO);	
+			TYPB E 1 A_CasingRifle();
+			TYPB F 1;
+			TYPB GH 2;
+			TYPB I 1;
+			TYPB J 1 A_PlaySound("type99/boltfor", CHAN_AUTO);
+			TYPB MNOPQRSTUVW 1;
+			TYFF IHGFE 1;
+			goto Zoomready;
+		}
+}
+
+Class ArisakaMagazine : Ammo
+{
+	Default
+	{
+	Inventory.Amount 5;
+	Inventory.MaxAmount 5;
+	Ammo.BackpackAmount 0;
+	Ammo.BackpackMaxAmount 5;
+}
+}
+
+Class IronSights : Inventory 
+{
+Default
+	{
+	Inventory.MaxAmount 1; 
+	}
+}
+
+Class ScopedDeselect : Inventory 
+{
+Default
+	{
+	Inventory.MaxAmount 1; 
+	}
+}
+
+Class ZoomOut : Inventory 
+{
+Default
+	{
+	Inventory.MaxAmount 1; 
+	}
+}
