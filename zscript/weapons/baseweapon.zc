@@ -17,39 +17,41 @@ class NAKUWEAPON : Doomweapon replaces DoomWeapon
 
 //Recoil
 
-action void A_AutoRecoil() {
-	if (GetCvar("recoil_toggle") == 1)
-	{
-		A_SetPitch(pitch - 1);
-		A_SetAngle(angle + random(-1, 1));		
-	    A_Recoil(0.1);	
-		}
+	action void A_AutoRecoil() {
+		if (GetCvar("recoil_toggle") == 1)
+		{
+			A_SetPitch(pitch - 0.5);	
+			A_Recoil(0.1);	
+			A_Quake(2,2,0,20);		
+			}
 	 
- }
+		}
 
-action void A_ShotgunRecoil() {
-	if (GetCvar("recoil_toggle") == 1)
-	{
-		A_SetPitch(pitch-0.5,SPF_INTERPOLATE);
-		A_SetAngle(angle+frandom(-0.25,0.25),SPF_INTERPOLATE);
-		A_SetPitch(pitch+0.5,SPF_INTERPOLATE);
-		 A_RECOIL(0.3);	
+				
+				
+
+
+	action void A_ShotgunRecoil() {
+		if (GetCvar("recoil_toggle") == 1)
+		{				
+			A_Recoil(0.4);
+			A_SetPitch(pitch - 1);
+			A_Quake(4,6,0,20);
+			}
+		
 		}
-	 
- }
  
- action void A_RevolverRecoil() {
+	action void A_RevolverRecoil() {
  
-	if (GetCvar("recoil_toggle") == 1)
-	{
-	
-		A_SetPitch(pitch - random(1, 3));
-		A_SetAngle(angle + random(-1, 3));
-		A_RECOIL(0.1);
+		if (GetCvar("recoil_toggle") == 1)
+		{
+				
+		A_Recoil(0.1);
+		A_SetPitch(pitch - 0.4);
+		A_Quake(3,3,0,20);
+		}
+ 
 	}
- 
- }
-
 //Casings
 
 action void A_CasingRifle() {

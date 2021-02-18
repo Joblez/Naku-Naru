@@ -1,6 +1,6 @@
 statusbar normal
 {
-	AspectRatio "4:3"
+	AspectRatio "16:9"
 	DrawImage "MENUBIT3", 280, 162;	
 	DrawImage "MENUBIT2", 280, 142;		
 	DrawImage "MENUBIT", 5, 160;

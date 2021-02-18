@@ -34,8 +34,7 @@ class Type96 : NAKUWEAPON
 	action void A_Type96Recoil() {
 	if (GetCvar("recoil_toggle") == 1)
 	{
-		A_SetPitch(pitch - random(1, 2));
-		A_SetAngle(angle + random(-1, 1));		
+		A_SetPitch(pitch - 0.5);
 	    A_Recoil(0.3);	
 		}		
 	}
@@ -149,6 +148,7 @@ class Type96 : NAKUWEAPON
 		TNT1 A 0 Setplayerproperty(0,1,2);
 		TNT1 A 4;
 		SELT ABCDEFGHI 1;
+		TNT1 A 0 A_Playsound("type96/boltrel");
 		goto ready;
 		
 		}

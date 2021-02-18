@@ -545,11 +545,11 @@ Actor Muzzlesmoke
 	+DONTSPLASH
 	Speed 1
 	RenderStyle Add
-	Alpha		0.5
+	Alpha		0.3
 	+CLIENTSIDEONLY
 	Radius		0
 	Height		0
-	Scale		0.4
+	Scale		0.3
 	
 	States
 	{
@@ -575,11 +575,11 @@ Actor Muzzlesmoke2 : Muzzlesmoke
 	+DONTSPLASH
 	Speed 1
 	RenderStyle Add
-	Alpha		0.5
+	Alpha		0.3
 	+CLIENTSIDEONLY
 	Radius		0
 	Height		0
-	Scale		0.8
+	Scale		0.2
 		
 }
 
