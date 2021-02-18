@@ -611,6 +611,84 @@ actor Smokespawner
 }
 
 
+ACTOR Rocketdebris 
+  {
+  +Missile
+  +RANDOMIZE
+  +FORCEXYBILLBOARD
+  -NOGRAVITY
+  +THRUACTORS
+  +GHOST
+  +THRUGHOST  
+  Damage 0
+  Gravity 0.3
+  bouncefactor 0.2
+  wallbouncefactor 0.2
+  RenderStyle "Add"  
+  speed 15
+  alpha 0.5
+  scale 0.6
+  
+  States
+  {
+  Spawn:
+	PRBM A 4 BRIGHT A_SetTranslucent(0.8,1)
+	TNT1 A 0 A_CustomMissile("RocketDebrisII", 0, 0, random (0, 360), 2, random (0, 180)) 
+	PRBM A 4 BRIGHT A_SetTranslucent(0.7,1)	
+	TNT1 A 0 A_CustomMissile("RocketDebrisII", 0, 0, random (0, 360), 2, random (0, 180)) 	
+	PRBM A 4 BRIGHT A_SetTranslucent(0.6,1)
+	TNT1 A 0 A_CustomMissile("RocketDebrisII", 0, 0, random (0, 360), 2, random (0, 180)) 	
+	PRBM A 4 BRIGHT A_SetTranslucent(0.4,1)
+	TNT1 A 0 A_CustomMissile("RocketDebrisII", 0, 0, random (0, 360), 2, random (0, 180)) 	
+	PRBM A 4 BRIGHT A_SetTranslucent(0.1,1)
+
+	Goto Death
+  Death:
+	TNT1 A 0
+	Stop
+  XDeath:
+	TNT1 A 0
+	Stop
+  }
+}
+
+ACTOR RocketdebrisII 
+  {
+  +Missile
+  +RANDOMIZE
+  +FORCEXYBILLBOARD
+  -NOGRAVITY
+  +THRUACTORS
+  +GHOST
+  +THRUGHOST  
+  Damage 0
+  Gravity 0.3
+  bouncefactor 0.2
+  wallbouncefactor 0.2
+  RenderStyle "Add"  
+  speed 10
+  alpha 0.5
+  scale 0.3
+  
+  States
+  {
+  Spawn:
+	PRBM A 4 BRIGHT A_SetTranslucent(0.8,1)
+	PRBM A 4 BRIGHT A_SetTranslucent(0.7,1)	
+	PRBM A 4 BRIGHT A_SetTranslucent(0.6,1)
+	PRBM A 4 BRIGHT A_SetTranslucent(0.4,1)
+	PRBM A 4 BRIGHT A_SetTranslucent(0.1,1)
+
+	Goto Death
+  Death:
+	TNT1 A 0
+	Stop
+  XDeath:
+	TNT1 A 0
+	Stop
+  }
+}
+
 ACTOR ShotSparks
   {
   Projectile

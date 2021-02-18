@@ -65,9 +65,8 @@ class Model1887 : NAKUWEAPON replaces shotgun
 		goto noammo;
 		M8AF A 1 BRIGHT {
 		A_ZoomFactor(0.975);
-		A_FireBullets (4, 5, 10, 6, "Bullet_Puff");			
+		A_FireBullets (3, 4, 9, 6, "Bullet_Puff");			
 		A_TakeInventory("M1887Tube",1);		
-		A_Quake(10,6,0,150);
 		A_ShotgunRecoil();
 		A_Playsound("1887/fire",1);
 		A_ShotgunSmoke();

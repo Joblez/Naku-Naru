@@ -1,66 +1,62 @@
 statusbar normal
 {
-	AspectRatio "16:9"
-	DrawImage "MENUBIT3", 280, 162;	
-	DrawImage "MENUBIT2", 280, 142;		
-	DrawImage "MENUBIT", 5, 160;
+	DrawImage "MENUBIT3", 326, 177;	
+	DrawImage "MENUBIT2", 326, 157;		
+	DrawImage "MENUBIT", -45, 165;
 	
 	//Health
-	DrawImage "PLUS", 5, 160;
-	DrawImage "SHIELD", 5, 170;
-	DrawNumber 3, ALTFONT, Grey, Health, drawshadow(1, 1), Alignment(center), 35, 165, 0, Red, 25, Black, 75;	
+	DrawImage "PLU2", -45, 164;
+	DrawImage "SHIEL2", -45, 176;
+	DrawNumber 3, ALTFONT, Grey, Health, drawshadow(1, 1), Alignment(center), -15, 167, 0, HudRed, 25, Black, 75;	
 	//Armor	
-	DrawNumber 3, ALTFONT, Grey, Armor, drawshadow(1, 1), Alignment(center), 35, 175, 0, Red, 25, Black, 100;	
+	DrawNumber 3, ALTFONT, Grey, Armor, drawshadow(1, 1), Alignment(center), -15, 180, 0, HudRed, 25, Black, 100;	
 	//Ammo	
-	DrawNumber 3, ALTFONT, Grey, Ammo1, drawshadow(1, 1), Alignment(center), 295, 147, 0, Red, 15, Black, 75;
+	DrawNumber 3, ALTFONT, Grey, Ammo1, drawshadow(1, 1), Alignment(center), 340, 161, 0, HudRed, 15, Black, 75;
 	UsesSecondaryAmmo
 	{
-		DrawNumber 3, ALTFONT, Grey, Ammo2, drawshadow(1,1), alignment(center), 295, 170, 0, Red, 5, Black, 15;
+		DrawNumber 3, ALTFONT, Grey, Ammo2, drawshadow(1,1), alignment(center), 340, 183, 0, HudRed, 5, Black, 15;
 	}
 	Alpha 0.5	
 		
 	//Inventory
 	DrawSelectedInventory center, SMALLFONT, 100, 180, 115, 180, Green;
 	//Keys
-	DrawSwitchableImage keyslot 3 && 6, "nullimage", "STKEYS1", "STKEYS4", "STKEYS7", 56, 170;
-	DrawSwitchableImage keyslot 2 && 5, "nullimage", "STKEYS0", "STKEYS3", "STKEYS6", 56, 165;	
-	DrawSwitchableImage keyslot 1 && 4, "nullimage", "STKEYS2", "STKEYS5", "STKEYS8", 56, 175;
+	DrawSwitchableImage keyslot 3 && 6, "nullimage", "STKEYS1", "STKEYS4", "STKEYS7", 5, 175;
+	DrawSwitchableImage keyslot 2 && 5, "nullimage", "STKEYS0", "STKEYS3", "STKEYS6", 5, 168;	
+	DrawSwitchableImage keyslot 1 && 4, "nullimage", "STKEYS2", "STKEYS5", "STKEYS8", 5, 182;
 
 		
 }
 
-statusbar fullscreen, fullscreenoffsets
+statusbar fullscreen
 {
-	AspectRatio "16:9"
-	DrawImage "MENUBIT3", 500, 320;		
-	DrawImage "MENUBIT2", 500, 300;		
-	DrawImage "MENUBIT", 75, 320;	
-	DrawImage "MENUBIT3", 91, 290;	
+
+	
 
 	//Bar
 	//DrawNumber 3,ALTFONT, Grey, SoulsBar, drawshadow(1, 1), Alignment(center), 35, 140, 0, Red, 25, Black, 75;	
 
 	
 	//Inventory
-	DrawSelectedInventory center, SMALLFONT, 36, 91, 320, 180, Green;
+	DrawSelectedInventory center, SMALLFONT, 36, 145, 115, 180, Green;
 		
 	//Health
-	DrawImage "PLUS", 75, 318;
-	DrawImage "SHIELD", 75, 331;
-	DrawNumber 3, ALTFONT, Grey, Health, drawshadow(1, 1), Alignment(center), 105, 323, 0, Red, 25, Black, 75;	
+	DrawImage "PLUS", -50, 160;
+	DrawImage "SHIELD", -50, 175;
+	DrawNumber 3, ALTFONT, HudGrey, Health, drawshadow(1, 1), Alignment(center), -15, 165, 0, HudRed, 25, HudWhite, 75;	
 	//Armor	
-	DrawNumber 3, ALTFONT, Grey, Armor, drawshadow(1, 1), Alignment(center), 105, 334, 0, Red, 25, Black, 100;	
+	DrawNumber 3, ALTFONT, HudGrey, Armor, drawshadow(1, 1), Alignment(center), -15, 180, 0, HudRed, 25, HudWhite, 100;	
 	//Ammo	
-	DrawNumber 3, ALTFONT, Grey, Ammo1, drawshadow(1, 1), Alignment(center), 514, 328, 0, Red, 15, Black, 75;
+	DrawNumber 3, ALTFONT, HudGrey, Ammo1, drawshadow(1, 1), Alignment(center), 340, 165, 0, HudRed, 15, HudWhite, 75;
 	UsesSecondaryAmmo
 	{
-		DrawNumber 3, ALTFONT, Grey, Ammo2, drawshadow(1,1), alignment(center), 514, 306, 0, Red, 5, Black, 15;
+		DrawNumber 3, ALTFONT, HudGrey, Ammo2, drawshadow(1,1), alignment(center), 340, 180, 0, HudRed, 2, HudWhite, 20;
 	}
 
 	//Keys
-	DrawSwitchableImage keyslot 3 && 6, "nullimage", "STKEYS1", "STKEYS4", "STKEYS7", 125, 323;
-	DrawSwitchableImage keyslot 2 && 5, "nullimage", "STKEYS0", "STKEYS3", "STKEYS6", 125, 331;
-	DrawSwitchableImage keyslot 1 && 4, "nullimage", "STKEYS2", "STKEYS5", "STKEYS8", 125, 338;
+	DrawSwitchableImage keyslot 3 && 6, "nullimage", "STKEYS1", "STKEYS4", "STKEYS7", 10, 175;
+	DrawSwitchableImage keyslot 2 && 5, "nullimage", "STKEYS0", "STKEYS3", "STKEYS6", 10, 165;	
+	DrawSwitchableImage keyslot 1 && 4, "nullimage", "STKEYS2", "STKEYS5", "STKEYS8", 10, 185;
 
 		
 }

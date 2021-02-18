@@ -1,0 +1,29 @@
+HudWhite
+{
+	#FFFFFF  #FFFFFF
+Console:
+	#000000  #7F7F7F    0 127
+	#808080  #FFFFFF  128 256
+Flat:
+	#FFFFFF
+}
+
+HudRed
+{
+	#FF0000  #FF0000
+Console:
+	#000000  #7F0000    0 127
+	#FF0000  #FFFEFE  128 256
+Flat:
+	#FF5566
+}
+
+HudGrey
+{
+	#9d3838  #EFEFEF
+Console:
+	#272727  #8B8B8B    0 127
+	#505050  #FFFFFF  128 256
+Flat:
+	#FFDDDD
+}

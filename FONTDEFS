@@ -10,5 +10,4 @@
        7 stnum7
        8 stnum8
        9 stnum9
-       NOTRANSLATION 256	// don't touch the shadow color!
    }
