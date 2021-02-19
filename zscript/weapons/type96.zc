@@ -118,6 +118,8 @@ class Type96 : NAKUWEAPON
 		TPPF DEF 1;	
 		goto ready;
 	reload:
+		TNT1 A 0 A_JumpIfInventory("Ammo77", 1, 1);
+		goto ready;		
 		TNT1 A 0 A_JumpIfInventory("NambuMagazine",55,"Ready");
 		T9PR ABCDEFGH 1;
 		T9PR I 1 A_Playsound("type96/magout");

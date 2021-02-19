@@ -238,11 +238,7 @@ class CARL_Rocket : Actor
 				A_SpawnProjectile ("SmokeSpawner2", 0, 0, random (0, 360), 2, random (0, 360));					
 				A_SpawnProjectile ("Carl_Rocket_Trail3", 0, 0, random (0, 360), 2, random (0, 360));				
 				A_SpawnProjectile ("SmokeSpawner2", 0, 0, random (0, 360), 2, random (0, 360));	
-				A_SpawnProjectile ("Carl_Rocket_Trail2", 0, 0, random (0, 360), 2, random (0, 360));				
-				A_SpawnProjectile ("SmokeSpawner2", 0, 0, random (0, 360), 2, random (0, 360));	
-				A_SpawnProjectile ("Carl_Rocket_Trail3", 0, 0, random (0, 360), 2, random (0, 360));				
-				A_SpawnProjectile ("SmokeSpawner2", 0, 0, random (0, 360), 2, random (0, 360));	
-				A_SpawnProjectile ("Carl_Rocket_Trail2", 0, 0, random (0, 360), 2, random (0, 360));		
+				A_SpawnProjectile ("Carl_Rocket_Trail2", 0, 0, random (0, 360), 2, random (0, 360));	
 				A_SpawnProjectile ("Carl_Rocket_trail3", 0, 0, random (0, 360), 2, random (0, 360));				
 				A_SpawnProjectile ("SmokeSpawner2", 0, 0, random (0, 360), 2, random (0, 360));	
 				A_SpawnProjectile ("Carl_Rocket_Trail2", 0, 0, random (0, 360), 2, random (0, 360));				
@@ -251,10 +247,6 @@ class CARL_Rocket : Actor
 				A_SpawnProjectile ("SmokeSpawner2", 0, 0, random (0, 360), 2, random (0, 360));	
 				A_SpawnProjectile ("Carl_Rocket_Trail2", 0, 0, random (0, 360), 2, random (0, 360));				
 				A_SpawnProjectile ("SmokeSpawner2", 0, 0, random (0, 360), 2, random (0, 360));					
-				A_SpawnProjectile ("Carl_Rocket_Trail3", 0, 0, random (0, 360), 2, random (0, 360));				
-				A_SpawnProjectile ("SmokeSpawner2", 0, 0, random (0, 360), 2, random (0, 360));	
-				A_SpawnProjectile ("Carl_Rocket_Trail2", 0, 0, random (0, 360), 2, random (0, 360));				
-				A_SpawnProjectile ("SmokeSpawner2", 0, 0, random (0, 360), 2, random (0, 360));	
 				A_SpawnProjectile ("Carl_Rocket_Trail3", 0, 0, random (0, 360), 2, random (0, 360));				
 				A_SpawnProjectile ("SmokeSpawner2", 0, 0, random (0, 360), 2, random (0, 360));	
 				A_SpawnProjectile ("Carl_Rocket_Trail2", 0, 0, random (0, 360), 2, random (0, 360));					
@@ -269,7 +261,18 @@ class CARL_Rocket : Actor
 				A_SpawnProjectile ("SmokeSpawner", 0, 0, random (0, 360), 2, random (0, 360));					
 				A_SpawnProjectile ("Rocketdebris", 0, 0, random (0, 360), 2, random (0, 360));				
 				A_SpawnProjectile ("SmokeSpawner", 0, 0, random (0, 360), 2, random (0, 360));	
-				A_SpawnProjectile ("Rocketdebris", 0, 0, random (0, 360), 2, random (0, 360));								
+				A_SpawnProjectile ("Rocketdebris", 0, 0, random (0, 360), 2, random (0, 360));	
+				A_SpawnProjectile ("Rocketdebris", 0, 0, random (0, 360), 2, random (0, 360));				
+				A_SpawnProjectile ("SmokeSpawner", 0, 0, random (0, 360), 2, random (0, 360));	
+				A_SpawnProjectile ("Rocketdebris", 0, 0, random (0, 360), 2, random (0, 360));				
+				A_SpawnProjectile ("SmokeSpawner", 0, 0, random (0, 360), 2, random (0, 360));	
+				A_SpawnProjectile ("Rocketdebris", 0, 0, random (0, 360), 2, random (0, 360));				
+				A_SpawnProjectile ("SmokeSpawner", 0, 0, random (0, 360), 2, random (0, 360));	
+				A_SpawnProjectile ("Rocketdebris", 0, 0, random (0, 360), 2, random (0, 360));				
+				A_SpawnProjectile ("SmokeSpawner", 0, 0, random (0, 360), 2, random (0, 360));					
+				A_SpawnProjectile ("Rocketdebris", 0, 0, random (0, 360), 2, random (0, 360));				
+				A_SpawnProjectile ("SmokeSpawner", 0, 0, random (0, 360), 2, random (0, 360));	
+				A_SpawnProjectile ("Rocketdebris", 0, 0, random (0, 360), 2, random (0, 360));					
 				}	
 			}	
 	EXPL A 1 BRIGHT A_Explode(128,256);

@@ -143,6 +143,8 @@ class Miroku : NAKUWEAPON replaces Pistol
 		goto ready;
 	
 	RELOAD:
+		TNT1 A 0 A_JumpIfInventory("Ammo44", 1, 1);
+		goto ready;		
 		TNT1 A 0 A_JumpIfInventory("NambuCylinder", 6, "ReloadFinish");
 		TNT1 A 0 A_JumpIfInventory("Ammo44", 1, "ProperReload");	
 		RELR ABCD 1;

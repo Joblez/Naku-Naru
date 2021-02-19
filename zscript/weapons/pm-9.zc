@@ -134,6 +134,8 @@ class PM9 : NAKUWEAPON replaces Chaingun
 		Loop;
 			
 	reload:
+			TNT1 A 0 A_JumpIfInventory("Ammo9mm", 1, 1);
+			goto ready;		
 		TNT1 A 0 A_JumpIfInventory("PM9Magazine",40,"Ready");
 		TNT1 A 0 A_JumpIfInventory("PM9Magazine", 40, "ReloadFinish");
 		TNT1 A 0 A_JumpIfInventory("Ammo9mm", 1, "ProperReload");

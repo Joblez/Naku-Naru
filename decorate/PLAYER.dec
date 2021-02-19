@@ -10,6 +10,7 @@ ACTOR Newplayer : PlayerPawn
   Player.StartItem "Miroku",1   
   //Player.Startitem "Type99",1  
   player.viewheight 48
+  Player.AttackZOffset 20
  // Player.StartItem "SoulsBar", 1   
   Player.StartItem "Cstaff"  
   Player.StartItem "Ammo44", 18
