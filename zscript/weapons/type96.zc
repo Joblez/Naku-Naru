@@ -3,11 +3,12 @@
 
 	バンザイ!
 		
-	A Japanese Copy of the formidable Bren LMG, The Nambu Type-99 LMG is a large,
+	A relic from a different era, with an unusual top-loading mechanism, The Nambu Type-99 LMG is a large,
 	somewhat unweildly weapon. Slow to fire, with heavy recoil, the Type-99 LMG punches 
 	hard and takes no prisoners. 7.7x58mm served in full-auto fire is nothing to snuff at,
-	especially at around 550 RPM. It's too large to allow use with a melee weapon, so 
-    it's best to be careful when enemies are upclose. 
+	especially at around 550 RPM. While not as tactical or modern as it's newer 
+	alternative, it holds a higher magazine capacity and fires a bigger calibre,
+	at the cost of larger recoil.
 		
 		
 */
@@ -34,8 +35,7 @@ class Type96 : NAKUWEAPON
 	action void A_Type96Recoil() {
 	if (GetCvar("recoil_toggle") == 1)
 	{
-		A_SetPitch(pitch - 0.5);
-	    A_Recoil(0.3);	
+		A_SetPitch(pitch - 0.8);
 		}		
 	}
 
@@ -129,12 +129,13 @@ class Type96 : NAKUWEAPON
 		T9PR W 1 A_Playsound("type96/magins");
 		T9PR X 1;
 		T9PR YZ 2;
+		TNT1 A 0 A_Playsound("type96/bolt");		
 		T9RR A 2;
-		T9RR BC 1;
-		T9RR D 1 A_Playsound("type96/boltback");
+		T9RR BC 2;
+		T9RR D 2 ;
 		T9RR EF 2;
 		T9RR G 1;
-		T9RR H 1 A_Playsound("type96/boltrel");
+		T9RR H 1; //A_Playsound("type96/boltrel");
 		T9RR IJKLMNOPQ 1;
 		ReloadRepeat:
 			TNT1 A 0 A_JumpIfInventory("NambuMagazine", 55, "ReloadFinish");

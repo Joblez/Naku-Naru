@@ -1,18 +1,13 @@
 /*
 	{			Howa Type 89 Assault Rifle			}
-		
+		A weapon for a more modern age, the Type 89 is a compact and formidable
+		Assault Rifle that takes elements from overseas designs in a uniquely 
+		Japanese package. Lower Capacity and with less penetrative power than
+		it's older alternative, but with an increased rate of fire and significantly
+		lower recoil.
 		
 */
 
-class BurstFire : Inventory
-{
-    Default
-    {
-        +INVENTORY.IGNORESKILL 
-        Inventory.MaxAmount 1;
-        Inventory.Icon "TNT1A0";
-    }
-}
 
 class Type89 : NAKUWEAPON 
 {
@@ -36,9 +31,8 @@ class Type89 : NAKUWEAPON
 	action void A_HowaRecoil() {
 	if (GetCvar("recoil_toggle") == 1)
 	{
-		A_SetPitch(pitch - 1);
-		A_SetAngle(angle + random(-1, 1));		
-	    A_Recoil(0.3);	
+		A_SetPitch(pitch - 0.5);
+		//A_SetAngle(angle + random(-1, 1));		
 		}
 	 
  }	
@@ -131,10 +125,11 @@ class Type89 : NAKUWEAPON
 		RELH T 2 A_Playsound("type96/magins");
 		RELH U 2;
 		RELH VWXYZ 1;
+		TNT1 A 0 A_Playsound("type96/bolt");			
 		REHH A 1 ;
-		REHH B 1 A_Playsound("type96/boltback");
+		REHH B 1;
 		REHH CD 2;
-		REHH E 1  A_Playsound("type96/boltrel");
+		REHH E 1; // A_Playsound("type96/boltrel");
 		REHH FGHIJKLM 1;
 	ReloadRepeat:
 			TNT1 A 0 A_JumpIfInventory("HowaMagazine", 45, "ReloadFinish");

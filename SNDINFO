@@ -148,6 +148,9 @@ smg/fire	UZIIFIR
 smg/boltrel UZIRELS
 
 type99/fire	TYPEFIR
+
+type96/bolt	TYPBOLT
+
 type99/boltback	BOLTBCK
 type99/boltfor	BOLTFOR
 type99/rifleload	LOADRIF

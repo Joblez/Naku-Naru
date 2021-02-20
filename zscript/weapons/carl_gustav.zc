@@ -6,8 +6,8 @@
 	
 	Made initially for an anti-tank purpose, the Carl-Gustav is now yours
 	to wield, if for shock value over anything. Of course, due to it's sheer
-	size, you're not able to melee while using it, but it's little issue. Great for 
-	crowd control. 
+	size, you're not able to melee while using it, but this is little issue. 
+	Probably the most economical choice for crowd control.
 		
 */
 
@@ -29,12 +29,10 @@ class Carl_Gustav : NAKUWEAPON replaces RocketLauncher
 		}
 		
 	action void A_RocketRecoil(){
-		
-	
-			A_OverlayOffset(1,random(-1,1),random(-1,1),WOF_ADD);			
-			A_Recoil(0.6);
+				
+			A_Recoil(0.2);
 			A_SetPitch(pitch - random(1, 6));
-			A_SetAngle(angle + random(-1, 6));			
+			//A_SetAngle(angle + random(-1, 6));			
 	}
 		
 	States
