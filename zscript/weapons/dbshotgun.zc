@@ -2,7 +2,9 @@
 	{			Stoeger 12 Gauge Shotgun			}
 
 	A classic American double barreled shotgun. Only holds 2 rounds at a time
-	but does a devastating amount of damage upclose. Has two triggers for each barrel.
+	but does a devastating amount of damage upclose. Has a trigger for each barrel.
+	You are unable to use a melee weapon with it, at the cost of being able to fire
+	both barrels at once.
 */
 
 class DBshotgun : NAKUWEAPON replaces supershotgun
@@ -171,7 +173,7 @@ action void A_DBCasingShotgun() {
 		TNT1 A 0 Setplayerproperty(0,1,2);
 		TNT1 A 4;
 		DSSS ABCEFG 1;
-		TNT1 A 0 A_playsound("1887/pumpfor");
+		TNT1 A 0 A_playsound("ssg/close");
 		GOTO READY;
 		
 		

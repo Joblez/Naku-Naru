@@ -64,6 +64,7 @@ class Yorick : NAKUWEAPON replaces BFG9000
 		TNT1 A 0 A_Raise;	
 		goto ready;
 	Ready:
+		TNT1 A 0 A_playsound("skull/loop",1,1,1);
 		UKUF A 4 bright A_Weaponready();
 		UKUF B 4 bright A_Weaponready();
 		UKUF C 4 bright A_Weaponready();
@@ -139,8 +140,8 @@ Class SKULLPROJECTILE : Actor
   +BLOODSPLATTER;
   +FORCEPAIN;
   Scale 1.2;
+    Decal "BFGScorch";
   SeeSound "Flamethrower/Fire";
-  DeathSound "yorick/explode";
   }
   States
   {
@@ -149,8 +150,9 @@ Class SKULLPROJECTILE : Actor
     FRFX NO 2 bright;
     Loop;
   Death:
-	TNT1 A 0 A_SetScale(6,6);
+	TNT1 A 0 A_SetScale(3,3);
 	TNT1 A 0 A_SetTranslucent(0.7);
+	TNT1 A 0 A_playsound("yorick/explode",1,1.0,0,0,0);	
 	EXPS A 1 BRIGHT A_Explode(300,512,0);
 		TNT1 A 0 {
            if (GetCvar("weapon_particle_toggle") == 1)
@@ -185,11 +187,35 @@ Class SKULLPROJECTILE : Actor
 				A_SpawnProjectile ("Carl_Rocket_Trail3", 0, 0, random (0, 360), 2, random (0, 360));				
 				A_SpawnProjectile ("SmokeSpawner2", 0, 0, random (0, 360), 2, random (0, 360));	
 				A_SpawnProjectile ("Carl_Rocket_Trail2", 0, 0, random (0, 360), 2, random (0, 360));					
-				A_SpawnProjectile ("SmokeSpawner2", 0, 0, random (0, 360), 2, random (0, 360));					
+				A_SpawnProjectile ("SmokeSpawner2", 0, 0, random (0, 360), 2, random (0, 360));			
+				A_SpawnProjectile ("SmokeSpawner2", 0, 0, random (0, 360), 2, random (0, 360));	
+				A_SpawnProjectile ("Rocketdebris", 0, 0, random (0, 360), 2, random (0, 360));				
+				A_SpawnProjectile ("SmokeSpawner", 0, 0, random (0, 360), 2, random (0, 360));	
+				A_SpawnProjectile ("Rocketdebris", 0, 0, random (0, 360), 2, random (0, 360));				
+				A_SpawnProjectile ("SmokeSpawner", 0, 0, random (0, 360), 2, random (0, 360));	
+				A_SpawnProjectile ("Rocketdebris", 0, 0, random (0, 360), 2, random (0, 360));				
+				A_SpawnProjectile ("SmokeSpawner", 0, 0, random (0, 360), 2, random (0, 360));	
+				A_SpawnProjectile ("Rocketdebris", 0, 0, random (0, 360), 2, random (0, 360));				
+				A_SpawnProjectile ("SmokeSpawner", 0, 0, random (0, 360), 2, random (0, 360));					
+				A_SpawnProjectile ("Rocketdebris", 0, 0, random (0, 360), 2, random (0, 360));				
+				A_SpawnProjectile ("SmokeSpawner", 0, 0, random (0, 360), 2, random (0, 360));	
+				A_SpawnProjectile ("Rocketdebris", 0, 0, random (0, 360), 2, random (0, 360));	
+				A_SpawnProjectile ("Rocketdebris", 0, 0, random (0, 360), 2, random (0, 360));				
+				A_SpawnProjectile ("SmokeSpawner", 0, 0, random (0, 360), 2, random (0, 360));	
+				A_SpawnProjectile ("Rocketdebris", 0, 0, random (0, 360), 2, random (0, 360));				
+				A_SpawnProjectile ("SmokeSpawner", 0, 0, random (0, 360), 2, random (0, 360));	
+				A_SpawnProjectile ("Rocketdebris", 0, 0, random (0, 360), 2, random (0, 360));				
+				A_SpawnProjectile ("SmokeSpawner", 0, 0, random (0, 360), 2, random (0, 360));	
+				A_SpawnProjectile ("Rocketdebris", 0, 0, random (0, 360), 2, random (0, 360));				
+				A_SpawnProjectile ("SmokeSpawner", 0, 0, random (0, 360), 2, random (0, 360));					
+				A_SpawnProjectile ("Rocketdebris", 0, 0, random (0, 360), 2, random (0, 360));				
+				A_SpawnProjectile ("SmokeSpawner", 0, 0, random (0, 360), 2, random (0, 360));	
+				A_SpawnProjectile ("Rocketdebris", 0, 0, random (0, 360), 2, random (0, 360));					
 				}	
 			}			
 	EXPS B 2 BRIGHT Radius_Quake(100,8,0,15,0);
 	EXPS C 2 BRIGHT Radius_Quake(100,8,0,15,0);
+	TNT1 A 0 A_SetScale(4,4);	
 	EXPS D 2 BRIGHT Radius_Quake(100,8,0,15,0);
 	EXPS E 2 BRIGHT Radius_Quake(100,8,0,15,0);
 	EXPS F 2 BRIGHT Radius_Quake(100,8,0,15,0);

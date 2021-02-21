@@ -57,7 +57,7 @@ class NAKUWEAPON : Doomweapon replaces DoomWeapon
 action void A_CasingRifle() {
 	if (GetCvar("casing_toggle") == 1)
 	{
-		A_FireProjectile("ARCaseSpawn",0,0,-3,-13);
+		A_FireProjectile("ARCaseSpawn",0,0,3,-16);
 		}
 	 
  }
@@ -75,7 +75,7 @@ action void A_CasingSMG() {
     if (GetCvar("casing_toggle") == 1)
 	{
 	
-		A_FireProjectile("SMGCaseSpawn",0,0,6,-6);
+		A_FireProjectile("SMGCaseSpawn",0,0,6,-13);
 			
 		}
 }			
