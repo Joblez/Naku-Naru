@@ -29,7 +29,7 @@ class DBshotgun : NAKUWEAPON replaces supershotgun
 			loop;
 
   Spawn:
-    MSSI A -1;
+    DSBP A -1;
     Stop;
 
 	NoAmmo:
@@ -114,7 +114,7 @@ class DBshotgun : NAKUWEAPON replaces supershotgun
 		DBSR R 1 A_WEAPONREADY(WRF_NOSWITCH);	
  		
 		TNT1 A 0 A_GiveInventory("DBTube", 2);
-		TNT1 A 0 A_Takeinventory("shells12gauge",1);		
+		TNT1 A 0 A_Takeinventory("shells12gauge",2);		
 		
 		Goto ReloadRepeat;
 		
