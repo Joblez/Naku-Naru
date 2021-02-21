@@ -35,7 +35,7 @@ class NAKUWEAPON : Doomweapon replaces DoomWeapon
 		if (GetCvar("recoil_toggle") == 1)
 		{				
 			A_Recoil(0.4);
-			A_SetPitch(pitch - 1);
+			A_SetPitch(pitch - 3);
 			A_Quake(4,6,0,20);
 			}
 		
@@ -47,7 +47,7 @@ class NAKUWEAPON : Doomweapon replaces DoomWeapon
 		{
 				
 		A_Recoil(0.1);
-		A_SetPitch(pitch - 0.4);
+		A_SetPitch(pitch - 0.5);
 		A_Quake(3,3,0,20);
 		}
  

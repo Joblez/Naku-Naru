@@ -33,7 +33,7 @@ class Type99 : NAKUWEAPON replaces chainsaw
 	action void A_ArisakaRecoil() {
 		if (GetCvar("recoil_toggle") == 1) {			
 			A_Recoil(0.5);
-			A_SetPitch(pitch - 2);	
+			A_SetPitch(pitch - 3);	
 			}
 		}			
 	States
