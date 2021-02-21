@@ -23,10 +23,10 @@ ACTOR Newplayer : PlayerPawn
   player.soundclass "player"  
   Player.Weaponslot 1, "CStaff"  
   Player.Weaponslot 2, "Miroku"
-  Player.Weaponslot 3, "Model1887"
+  Player.Weaponslot 3, "Model1887","DBshotgun"
   Player.Weaponslot 4, "PM9"
   Player.Weaponslot 5, "Carl_Gustav"  
-  Player.Weaponslot 6,  "Type96","Type89","Type99"  
+  Player.Weaponslot 6,  "Type99","Type89","Type96"  
   Player.Weaponslot 7, "Yorick"  
   Speed 1.1
   +NOSKIN

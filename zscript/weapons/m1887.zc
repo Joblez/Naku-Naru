@@ -26,6 +26,7 @@ class Model1887 : NAKUWEAPON replaces shotgun
 		+WEAPON.NOAUTOFIRE;
 		+WEAPON.NOALERT;
 		}
+		
 		States
 		{
 		

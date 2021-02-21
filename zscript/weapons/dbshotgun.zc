@@ -21,6 +21,25 @@ class DBshotgun : NAKUWEAPON replaces supershotgun
 		+WEAPON.NOAUTOFIRE;
 		+WEAPON.NOALERT;
 		}
+
+	action void A_DBShotgunRecoil() {
+		if (GetCvar("recoil_toggle") == 1)
+		{				
+			A_Recoil(0.4);
+			A_SetPitch(pitch - 6);
+			A_Quake(6,6,0,50);
+			}
+		
+		}
+
+action void A_DBCasingShotgun() {
+    if (GetCvar("casing_toggle") == 1)
+	{
+		A_FireProjectile("ShellCaseSpawn",0,0,10,-20);
+		}
+	
+ }
+		
 		States
 		{
 		
@@ -43,7 +62,7 @@ class DBshotgun : NAKUWEAPON replaces supershotgun
 		goto noammo;
 		DBSF A 1 BRIGHT {
 		A_ZoomFactor(0.975);
-		A_FireBullets (3, 4, 9, 6, "Bullet_Puff");			
+		A_FireBullets (4, 4, 9, 6, "Bullet_Puff");			
 		A_TakeInventory("DBTube",1);		
 		A_ShotgunRecoil();
 		A_Playsound("1887/fire",1);
@@ -67,9 +86,9 @@ class DBshotgun : NAKUWEAPON replaces supershotgun
 		goto fire;			
 		DBSF A 1 BRIGHT {
 		A_ZoomFactor(0.975);
-		A_FireBullets (3, 4, 18, 6, "Bullet_Puff");			
+		A_FireBullets (6, 8, 18, 6, "Bullet_Puff");			
 		A_TakeInventory("DBTube",2);		
-		A_ShotgunRecoil();
+		A_DBShotgunRecoil();
 		A_Playsound("ssg/fire",1);
 		A_ShotgunSmoke();
 		A_AlertMonsters();	
@@ -95,6 +114,12 @@ class DBshotgun : NAKUWEAPON replaces supershotgun
 		DBSR E 1;
 		DBSR F 1;
 		DBSR G 1;
+		TNT1 A 0 {
+		
+		A_DBCAsingshotgun();
+		A_DBCAsingshotgun();
+		}
+		
 		DBSR H 2;
 		DBSR I 2;
 		DBSR J 2;
@@ -113,8 +138,8 @@ class DBshotgun : NAKUWEAPON replaces supershotgun
 		DBSR Q 2 A_WEAPONREADY(WRF_NOSWITCH);
 		DBSR R 1 A_WEAPONREADY(WRF_NOSWITCH);	
  		
-		TNT1 A 0 A_GiveInventory("DBTube", 2);
-		TNT1 A 0 A_Takeinventory("shells12gauge",2);		
+		TNT1 A 0 A_GiveInventory("DBTube", 1);
+		TNT1 A 0 A_Takeinventory("shells12gauge",1);		
 		
 		Goto ReloadRepeat;
 		
