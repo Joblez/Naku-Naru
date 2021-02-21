@@ -58,6 +58,11 @@ scr3	SCARFI3
 1887/pumpfor	PUMPFOS
 1887/insertshell SHELLINS
 
+ssg/fire	DSDSHTGN
+ssg/load	DSDBLOD
+ssg/close	DSDBCLS
+ssg/open	DSDBOPN
+
 menu/activate			BLIP3	// Activate a new menu
 menu/backup			BLIP1	// Backup to previous menu
 menu/prompt			BLIP1	// Activate a prompt "menu"

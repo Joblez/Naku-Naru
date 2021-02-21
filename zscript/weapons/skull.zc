@@ -22,7 +22,7 @@ class Yorick : NAKUWEAPON replaces BFG9000
 		Weapon.AmmoGive 1;		
 		Inventory.PickupMessage "[7]Yorick.";
 		Weapon.Slotnumber 7;	
-		Tag "Yorick.";
+		Tag "Yorick";
 		+WEAPON.BFG;
 		+WEAPON.EXPLOSIVE;
 		Scale 0.8;

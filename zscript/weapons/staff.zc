@@ -33,7 +33,7 @@ class CStaff : NAKUWEAPON
 		+WEAPON.NOALERT;
 		+WEAPON.NOAUTOFIRE;
 		Weapon.Slotnumber 1;
-		Tag "Staff.";		
+		Tag "Staff";		
 		Weapon.UpSound "staff/unsheath";
 		}
 		

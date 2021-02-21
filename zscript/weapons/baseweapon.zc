@@ -133,21 +133,6 @@ class SwingCheck : inventory
 	}
 }
 
-class chainsawspawner: actor replaces chainsaw
-{
-	default
-	{
-	}
-	states
-	{
-	spawn:
-	TNT1 A 1;
-	TNT1 A 1 A_SpawnProjectile("Type99",10,4,random(-85,-95),2,random(30,60));
-	stop;
-	}
-
-}
-
 Class PlasmaSpawner : Actor replaces Plasmarifle
 {
 	Default

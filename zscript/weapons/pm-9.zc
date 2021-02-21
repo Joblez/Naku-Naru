@@ -26,7 +26,7 @@ class PM9 : NAKUWEAPON replaces Chaingun
 		Weapon.Slotnumber 4;	
 		Scale 0.8;
 		+WEAPON.NOAUTOFIRE;			
-		Tag "PM-9.";
+		Tag "PM-9";
 		+weapon.NOALERT;
 		+WEAPON.NOAUTOAIM;		
 		}

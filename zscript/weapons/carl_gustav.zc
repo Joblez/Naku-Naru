@@ -21,7 +21,7 @@ class Carl_Gustav : NAKUWEAPON replaces RocketLauncher
 		Weapon.AmmoGive 10;		
 		Inventory.PickupMessage "[5]Carl Gustav M2 - 84mm Anti-Tank Weapon";
 		Weapon.Slotnumber 5;	
-		Tag "Gustav.";
+		Tag "Gustav";
 		attacksound "m2/fire";
 		+WEAPON.NOAUTOAIM;
 		+Weapon.NoAutoFire;

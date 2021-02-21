@@ -1,0 +1,165 @@
+/*
+	{			Stoeger 12 Gauge Shotgun			}
+
+	A classic American double barreled shotgun. Only holds 2 rounds at a time
+	but does a devastating amount of damage upclose. Has two triggers for each barrel.
+*/
+
+class DBshotgun : NAKUWEAPON replaces supershotgun
+{
+	Default
+	{
+		Weapon.AmmoType "shells12gauge";
+		Weapon.AmmoType2 "DBTube";		
+		Weapon.Kickback 100;
+		Weapon.AmmoUse 0;
+		Weapon.AmmoGive 8;		
+		Inventory.PickupMessage "[3]Stoeger Coach Shotgun - 12 gauge";
+		Weapon.Slotnumber 3;
+		Tag "Stoeger Coach Gun";
+		+WEAPON.NOAUTOAIM;	
+		+WEAPON.NOAUTOFIRE;
+		+WEAPON.NOALERT;
+		}
+		States
+		{
+		
+				deselect:
+			TNT1 A 0 A_Lower;
+			loop;
+
+  Spawn:
+    MSSI A -1;
+    Stop;
+
+	NoAmmo:
+		DBSI A 2 Offset(1,32) A_PlaySound("weapons/empty");
+		DBSI A 2 Offset(3,35);
+ 		TNT1 A 0 Offset(1,30);	
+		Goto ready;
+	
+	fire:
+		TNT1 A 0 A_JumpIfInventory("DBTube",1,1);
+		goto noammo;
+		DBSF A 1 BRIGHT {
+		A_ZoomFactor(0.975);
+		A_FireBullets (3, 4, 9, 6, "Bullet_Puff");			
+		A_TakeInventory("DBTube",1);		
+		A_ShotgunRecoil();
+		A_Playsound("1887/fire",1);
+		A_ShotgunSmoke();
+		A_AlertMonsters();	
+		}		
+		DBSF B 1; 
+		TNT1 A 0 A_ZoomFactor(1.000);
+		DBSF C 1;
+		DBSF DE 2;
+		DBSF F 1;
+		DBSF G 2;
+		DBSF H 1;
+		DBSF IJ 2;
+		goto ready;
+
+	altfire:	
+		TNT1 A 0 A_JumpIfInventory("DBTube",1,1);
+		goto noammo;
+		TNT1 A 0 A_JumpIfInventory("DBTube",2,1);
+		goto fire;			
+		DBSF A 1 BRIGHT {
+		A_ZoomFactor(0.975);
+		A_FireBullets (3, 4, 18, 6, "Bullet_Puff");			
+		A_TakeInventory("DBTube",2);		
+		A_ShotgunRecoil();
+		A_Playsound("ssg/fire",1);
+		A_ShotgunSmoke();
+		A_AlertMonsters();	
+		}		
+		DBSF B 1; 
+		TNT1 A 0 A_ZoomFactor(1.000);
+		DBSF C 1;
+		DBSF DE 3;
+		DBSF F 2;
+		DBSF G 2;
+		DBSF H 1;
+		DBSF IJ 2;
+		goto ready;
+		
+	reload:
+		TNT1 A 0 A_JumpIfInventory("shells12gauge",1,1);
+		Goto Ready;
+		TNT1 A 0 A_JumpIfInventory("DBTube",2,"Ready");
+		DBSR A 1 A_PlaySound("ssg/open", CHAN_AUTO);
+		DBSR B 1;
+		DBSR C 1;
+		DBSR D 1;
+		DBSR E 1;
+		DBSR F 1;
+		DBSR G 1;
+		DBSR H 2;
+		DBSR I 2;
+		DBSR J 2;
+		DBSR K 2;
+		DBSR L 2;
+	ReloadRepeat:
+		TNT1 A 0 A_JumpIfInventory("DBTube", 2, "ReloadFinish");
+		TNT1 A 0 A_JumpIfInventory("shells12gauge", 1, "ProperReload");
+		Goto ReloadFinish;
+		
+	ProperReload:			
+		DBSR M 1 A_WEAPONREADY(WRF_NOSWITCH);
+		DBSR N 1 A_WEAPONREADY(WRF_NOSWITCH);
+		DBSR O 2 A_playsound("ssg/load");
+		DBSR P 2 A_WEAPONREADY(WRF_NOSWITCH);
+		DBSR Q 2 A_WEAPONREADY(WRF_NOSWITCH);
+		DBSR R 1 A_WEAPONREADY(WRF_NOSWITCH);	
+ 		
+		TNT1 A 0 A_GiveInventory("DBTube", 2);
+		TNT1 A 0 A_Takeinventory("shells12gauge",1);		
+		
+		Goto ReloadRepeat;
+		
+		TNT1 A 0 A_JumpIfInventory("DBTube", 2, "ReloadFinish");		
+		
+		Goto ReloadFinish;
+			
+	ReloadFinish:
+		DBSR S 1 A_WEAPONREADY(WRF_NOSWITCH);	
+		DBSR T 1;
+		DBSR U 2  A_PlaySound("ssg/close", CHAN_AUTO);
+		DBSR V 2;
+		DBSR W 2;
+		DBSR X 1;
+		DBSR Y 1;
+		DBSR Z 1;
+		DBRR A 1;
+		DBRR B 1;
+		DBRR C 1;
+		DBRR D 2;
+		DBRR EF 2;
+		Goto Ready;		
+
+	ready:
+		DBSI ABCDEEDCBA  4 A_Weaponready(WRF_ALLOWRELOAD);
+		Loop;
+	
+	select:
+		TNT1 A 0 Setplayerproperty(0,1,2);
+		TNT1 A 4;
+		DSSS ABCEFG 1;
+		TNT1 A 0 A_playsound("1887/pumpfor");
+		GOTO READY;
+		
+		
+		}
+}	
+
+Class DBTube : Ammo
+{
+	Default
+	{
+	Inventory.Amount 2;
+	Inventory.MaxAmount 2;
+	Ammo.BackpackAmount 0;
+	Ammo.BackpackMaxAmount 2;
+}
+}

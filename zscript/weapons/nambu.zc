@@ -14,7 +14,7 @@ class Miroku : NAKUWEAPON replaces Pistol
 		Weapon.Kickback 100;
 		Weapon.SlotNumber 2;
 		Inventory.PickupMessage "[2]Miroku Police Special - .38 Special.";
-		Tag "Miroku.";
+		Tag "Miroku";
 		Weapon.AmmoUse 0;
 		Weapon.AmmoGive 20;
 		Weapon.AmmoType "Ammo44";

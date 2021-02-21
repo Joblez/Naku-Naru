@@ -24,7 +24,7 @@ class Type96 : NAKUWEAPON
 		Weapon.AmmoGive 120;		
 		Inventory.PickupMessage "[6]Nambu Type 99 LMG - 7.7x58mm";
 		Weapon.Slotnumber 6;	
-		Tag "Nambu.";
+		Tag "Nambu";
 		attacksound "";
 		+WEAPON.NOAUTOAIM;		
 		+WEAPON.NOALERT;

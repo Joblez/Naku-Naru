@@ -21,7 +21,7 @@ class Model1887 : NAKUWEAPON replaces shotgun
 		Weapon.AmmoGive 8;		
 		Inventory.PickupMessage "[3]Model 1887 Shotgun - 12 gauge";
 		Weapon.Slotnumber 3;
-		Tag "Model 1887.";
+		Tag "Model 1887";
 		+WEAPON.NOAUTOAIM;	
 		+WEAPON.NOAUTOFIRE;
 		+WEAPON.NOALERT;

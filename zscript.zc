@@ -23,3 +23,5 @@ version "4.0"
 #include "zscript/weapons/type96.zc"
 
 #include "zscript/weapons/howa.zc"
+
+#include "zscript/weapons/dbshotgun.zc"

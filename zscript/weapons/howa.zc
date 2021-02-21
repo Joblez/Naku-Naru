@@ -20,7 +20,7 @@ class Type89 : NAKUWEAPON
 		Weapon.AmmoGive 90;		
 		Inventory.PickupMessage "[6]Nambu Type 89 AR - 5.56x45mm";
 		Weapon.Slotnumber 6;	
-		Tag "Howa.";
+		Tag "Howa";
 		attacksound "";
 		+WEAPON.NOAUTOAIM;		
 		+WEAPON.NOALERT;
@@ -121,12 +121,13 @@ class Type89 : NAKUWEAPON
 		RELH I 1 A_Playsound("type96/magout");
 		RELH J 1;
 		RELH KLM 2;
-		RELH NOPQRS 1;
-		RELH T 2 A_Playsound("type96/magins");
+		RELH NOPQR 1;
+		TNT1 A 0  A_Playsound("type96/magins");
+		RELH ST 2;
 		RELH U 2;
-		RELH VWXYZ 1;
-		TNT1 A 0 A_Playsound("type96/bolt");			
+		RELH VWXYZ 1;		
 		REHH A 1 ;
+		TNT1 A 0 A_Playsound("type96/bolt");			
 		REHH B 1;
 		REHH CD 2;
 		REHH E 1; // A_Playsound("type96/boltrel");
